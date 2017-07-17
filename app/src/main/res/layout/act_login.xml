@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="loginVM"
+            type="tgs.com.mvvm.vm.LoginVM"></variable>
+    </data>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="tgs.com.mvvm.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="50px"
+                android:hint="输入账号">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/user_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@={loginVM.username}"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="50px"
+                android:hint="输入密码">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/user_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@={loginVM.password}"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                bind:click="@{loginVM.loginClick}"
+                android:text="登录"/>
+        </LinearLayout>
+
+        <tgs.com.mvvm.weight.RotateLoading
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+</layout>
