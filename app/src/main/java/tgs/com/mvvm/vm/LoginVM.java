@@ -39,12 +39,20 @@ public class LoginVM extends BaseVM<ILogin> {
                         i.openActivity(MainAct.class);
                         i.finish();
                     }
-    
+
 //                    @Override
 //                    protected void error(String message) {
 //                        i.openActivity(MainAct.class);
 //                        i.finish();
 //                    }
                 });
+
+//        RetrofitUtil.getJson().login2(username.get(), password.get()).compose(RxHelper.ioMain())
+//                .subscribe(new RxSubscribe<UserInfo>(i) {
+//                    @Override
+//                    protected void next(UserInfo userInfo) {
+//                    }
+//                });
+        
     });
 }

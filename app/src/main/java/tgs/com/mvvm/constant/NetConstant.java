@@ -5,5 +5,5 @@ package tgs.com.mvvm.constant;
  */
 
 public interface NetConstant {
-    String BASE_URL = "http://test-cashier.dounikaixin.cn/";
+    String BASE_URL = "http://www.baidu.com/";
 }

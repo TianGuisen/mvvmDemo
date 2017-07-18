@@ -19,6 +19,7 @@ public interface RetrofitService {
      * @param account  用户名
      * @param password 密码
      * @return token
+     * {"code":1,"message":"成功","data":"7f0cda8519f0e0456c6f89dbd979da9d","success":true,"error":false}
      */
     @FormUrlEncoded
     @POST("login.json")
@@ -30,6 +31,7 @@ public interface RetrofitService {
      * @param account  用户名
      * @param password 密码
      * @return 获取用户信息
+     * {"code":1,"data":{"age":10,"name":"田桂森"},"error":false,"message":"成功","success":true}
      */
     @FormUrlEncoded
     @POST("login.json2")
