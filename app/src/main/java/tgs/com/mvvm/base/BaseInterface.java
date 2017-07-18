@@ -22,4 +22,5 @@ public interface BaseInterface {
     BaseActivity getBaseActivity();
     
     void finish();
+    
 }

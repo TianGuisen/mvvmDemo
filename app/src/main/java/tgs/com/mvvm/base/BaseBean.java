@@ -7,25 +7,25 @@ import java.io.Serializable;
  */
 
 public class BaseBean<T> implements Serializable {
-    private int status;
+    private int code;
     private String message;
     private T data;
     
     @Override
     public String toString() {
         return "BaseBean{" +
-                "status=" + status +
+                "code=" + code +
                 ", message='" + message + '\'' +
                 ", data=" + data +
                 '}';
     }
     
-    public int getStatus() {
-        return status;
+    public int getCode() {
+        return code;
     }
     
-    public void setStatus(int status) {
-        this.status = status;
+    public void setCode(int code) {
+        this.code = code;
     }
     
     public String getMessage() {

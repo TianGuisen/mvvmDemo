@@ -1,12 +1,13 @@
 package tgs.com.mvvm.base;
 
 import android.databinding.DataBindingUtil;
-import android.databinding.ObservableList;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.List;
 
 import tgs.com.mvvm.core.ReplyCommand;
 
@@ -17,44 +18,17 @@ import tgs.com.mvvm.core.ReplyCommand;
  */
 
 public abstract class BaseAdapter<E, V extends ViewDataBinding> extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
-    protected ObservableList<E> datas;
+    protected List<E> datas;
     protected int layoutID;
     protected int BR;
     
     /**
      * list需要是ObservableList
      */
-    public BaseAdapter(ObservableList<E> datas, int layoutID, int BR) {
+    public BaseAdapter(List<E> datas, int layoutID, int BR) {
         this.datas = datas;
         this.layoutID = layoutID;
         this.BR = BR;
-        //不用再去调用notifyDataSetChanged()了。
-        datas.addOnListChangedCallback(new ObservableList.OnListChangedCallback<ObservableList<E>>() {
-            @Override
-            public void onChanged(ObservableList sender) {
-                notifyDataSetChanged();
-            }
-            
-            @Override
-            public void onItemRangeChanged(ObservableList sender, int positionStart, int itemCount) {
-                notifyDataSetChanged();
-            }
-            
-            @Override
-            public void onItemRangeInserted(ObservableList sender, int positionStart, int itemCount) {
-                notifyDataSetChanged();
-            }
-            
-            @Override
-            public void onItemRangeMoved(ObservableList sender, int fromPosition, int toPosition, int itemCount) {
-                notifyDataSetChanged();
-            }
-            
-            @Override
-            public void onItemRangeRemoved(ObservableList sender, int positionStart, int itemCount) {
-                notifyDataSetChanged();
-            }
-        });
     }
     
     protected ReplyCommand<E> itemClickCommand;

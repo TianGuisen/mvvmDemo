@@ -29,9 +29,9 @@ public class RetrofitUtil {
         for (Interceptor interceptor : params.interceptors) {
             builder.addInterceptor(interceptor);
         }
-        builder.connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.MINUTES)
-                .writeTimeout(30, TimeUnit.MINUTES);
+        builder.connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.MINUTES)
+                .writeTimeout(15, TimeUnit.MINUTES);
         
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(params.baseUrl)

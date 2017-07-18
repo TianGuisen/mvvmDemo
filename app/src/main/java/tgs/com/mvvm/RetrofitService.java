@@ -1,5 +1,6 @@
 package tgs.com.mvvm;
 
+
 import io.reactivex.Flowable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -14,10 +15,23 @@ import tgs.com.mvvm.bean.UserInfo;
 public interface RetrofitService {
     /**
      * 登录
-     * @param username 用户名
+     *
+     * @param account  用户名
      * @param password 密码
+     * @return token
      */
     @FormUrlEncoded
-    @POST("user/login.do")
-    Flowable<BaseBean<UserInfo>> login(@Field("username") String username, @Field("password") String password);
+    @POST("login.json")
+    Flowable<BaseBean<String>> login(@Field("account") String account, @Field("password") String password);
+    
+    /**
+     * 登录
+     *
+     * @param account  用户名
+     * @param password 密码
+     * @return 获取用户信息
+     */
+    @FormUrlEncoded
+    @POST("login.json2")
+    Flowable<BaseBean<UserInfo>> login2(@Field("account") String account, @Field("password") String password);
 }

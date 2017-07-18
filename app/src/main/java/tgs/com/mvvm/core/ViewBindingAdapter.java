@@ -17,9 +17,12 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
-import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
+import tgs.com.mvvm.utils.AppUtils;
 
 /**
  * Created by 田桂森 on 2017/4/14.
@@ -101,28 +104,23 @@ public final class ViewBindingAdapter {
      * 刷新控件,可以换成任意其他的
      */
     @BindingAdapter({"load"})
-    public static void onLoadCommand(BGARefreshLayout bgaRefreshLayout, final ReplyCommand onRefreshCommand) {
-        bgaRefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(bgaRefreshLayout.getContext(), true));
-        bgaRefreshLayout.setDelegate(new BGARefreshLayout.BGARefreshLayoutDelegate() {
+    public static void onLoadCommand(SmartRefreshLayout smartRefreshLayout, final ReplyCommand onRefreshCommand) {
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-                if (onRefreshCommand != null) {
-                    onRefreshCommand.execute(0);
-                }
+            public void onRefresh(RefreshLayout refreshlayout) {
+                onRefreshCommand.execute(0);
             }
-            
+        });
+        smartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
-            public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
-                if (onRefreshCommand != null) {
-                    onRefreshCommand.execute(1);
-                }
-                return false;
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                onRefreshCommand.execute(1);
             }
         });
     }
     
     /**
-     * image加载网络图片
+     * 加载网络图片
      */
     @BindingAdapter({"imageUrl"})
     public static void imageUri(SimpleDraweeView simpleDraweeView, String imageUrl) {
@@ -132,13 +130,12 @@ public final class ViewBindingAdapter {
     }
     
     /**
-     * image加载本地图片
+     * 加载本地图片
      */
     @BindingAdapter({"imageLocal"})
     public static void localImage(SimpleDraweeView sdv, @IdRes int id) {
         if (id > 0) {
-            //注意包名
-            Uri uri = Uri.parse("res://com.smartpeak.zhwscan/" + id);
+            Uri uri = Uri.parse("res://" + AppUtils.getAppProcessName() + "/" + id);
             sdv.setImageURI(uri);
         }
     }

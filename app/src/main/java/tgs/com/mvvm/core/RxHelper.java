@@ -22,7 +22,7 @@ public class RxHelper {
      */
     public static <T> FlowableTransformer<BaseBean<T>, T> ioMain() {
         return baseEntityObservable -> baseEntityObservable.flatMap(result -> {
-            if (result.getStatus() == 0) {
+            if (result.getCode() == 1) {
                 return createDate(result.getData());
             } else {
                 return Flowable.error(new Exception(result.getMessage().toString()));

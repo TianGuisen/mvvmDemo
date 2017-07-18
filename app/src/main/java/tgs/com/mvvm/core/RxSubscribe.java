@@ -60,7 +60,7 @@ public abstract class RxSubscribe<T> implements Subscriber<T> {
             } else if (e instanceof HttpException) {
                 ToastUtil.showToast(context, "服务器异常,请稍后再试");
             } else {
-                LogUtils.e(e);
+                LogUtils.d(e);
                 error(e.getMessage());
             }
         }
