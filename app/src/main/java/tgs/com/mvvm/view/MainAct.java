@@ -6,17 +6,16 @@ import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.base.BaseActivity;
 import tgs.com.mvvm.base.BaseVM;
-import tgs.com.mvvm.bean.ItemInfo;
 import tgs.com.mvvm.databinding.ActMainBinding;
 import tgs.com.mvvm.view.Iview.IMain;
 import tgs.com.mvvm.vm.MainVM;
-import tgs.com.mvvm.weight.CommonAdapter;
+import tgs.com.mvvm.weight.UserAdapter;
 
 
 public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
     
     private MainVM mainVM;
-    private CommonAdapter<ItemInfo> commonAdapter;
+    private UserAdapter userAdapter;
     
     @Override
     protected int setBR() {
@@ -37,9 +36,10 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
     @Override
     public void init() {
         getBind().rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        mainVM.list.add(new ItemInfo("a"));
-        commonAdapter = new CommonAdapter(mainVM.list, R.layout.item, BR.itemInfo);
-        getBind().rv.setAdapter(commonAdapter);
+        userAdapter = new UserAdapter(mainVM.list, R.layout.item, BR.itemInfo);
+        getBind().rv.setAdapter(userAdapter);
+        userAdapter.setItemClickCommand(mainVM.itemClick);
+        userAdapter.setChildClickCommand(mainVM.childClick);
     }
     
     @Override
@@ -54,6 +54,6 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
     
     @Override
     public void notifyAdapter() {
-        commonAdapter.notifyDataSetChanged();
+        userAdapter.notifyDataSetChanged();
     }
 }

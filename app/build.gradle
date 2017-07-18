@@ -57,8 +57,8 @@ dependencies {
     compile 'io.reactivex:rxjava:1.2.10'
     //retrofit
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:converter-scalars:2.2.0'
+    compile 'org.ligboy.retrofit2:converter-fastjson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
     //权限
     compile 'pub.devrel:easypermissions:0.4.2'
@@ -70,4 +70,6 @@ dependencies {
     compile 'com.alibaba:fastjson:1.2.31'
     //屏幕适配
     compile 'com.zhy:autolayout:1.4.5'
+    compile 'me.yokeyword:fragmentation:1.0.7'
+   
 }

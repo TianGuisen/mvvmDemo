@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zhy.autolayout.utils.AutoUtils;
+
 import java.util.List;
 
 import tgs.com.mvvm.core.ReplyCommand;
@@ -22,23 +24,20 @@ public abstract class BaseAdapter<E, V extends ViewDataBinding> extends Recycler
     protected int layoutID;
     protected int BR;
     
-    /**
-     * list需要是ObservableList
-     */
     public BaseAdapter(List<E> datas, int layoutID, int BR) {
         this.datas = datas;
         this.layoutID = layoutID;
         this.BR = BR;
     }
     
-    protected ReplyCommand<E> itemClickCommand;
-    protected ReplyCommand<E> childClickCommand;
-    public void setItemClickCommand(ReplyCommand<E> itemClickCommand) {
-        this.itemClickCommand = itemClickCommand;
+    protected ReplyCommand<E> itemClick;
+    protected ReplyCommand<E> childClick;
+    public void setItemClickCommand(ReplyCommand<E> itemClick) {
+        this.itemClick = itemClick;
     }
     
-    public void setChildClickCommand(ReplyCommand<E> childClickCommand) {
-        this.childClickCommand = childClickCommand;
+    public void setChildClickCommand(ReplyCommand<E> childClick) {
+        this.childClick = childClick;
     }
     
     @Override
@@ -53,9 +52,9 @@ public abstract class BaseAdapter<E, V extends ViewDataBinding> extends Recycler
     public void onBindViewHolder(final BaseAdapter.ViewHolder holder, final int position) {
         final E bean = datas.get(position);
         final View itemView = holder.getBinding().getRoot();
-        if (itemClickCommand != null) {
+        if (itemClick != null) {
             itemView.setOnClickListener(v -> {
-                itemClickCommand.execute(bean, holder.getBinding().getRoot(), position);
+                itemClick.execute(bean, holder.getBinding().getRoot(), position);
             });
         }
         setExtension(bean,  holder, position);
@@ -63,7 +62,7 @@ public abstract class BaseAdapter<E, V extends ViewDataBinding> extends Recycler
         holder.getBinding().executePendingBindings();
     }
     
-    protected void setExtension(E bean, ViewHolder bind, int position) {
+    protected void setExtension(E bean, ViewHolder holder, int position) {
         
     }
     
@@ -78,6 +77,8 @@ public abstract class BaseAdapter<E, V extends ViewDataBinding> extends Recycler
         
         public ViewHolder(View itemView) {
             super(itemView);
+            //适配
+            AutoUtils.autoSize(itemView);
         }
         
         public void setBinding(V binding) {

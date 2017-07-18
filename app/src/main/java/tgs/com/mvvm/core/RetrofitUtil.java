@@ -10,7 +10,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.fastjson.FastJsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 import tgs.com.mvvm.RetrofitService;
 import tgs.com.mvvm.constant.NetConstant;
@@ -70,7 +70,7 @@ public class RetrofitUtil {
                     RetrofitParams retrofitParams = new RetrofitParams();
                     retrofitParams.interceptors.add(new ParamInterceptor());
                     retrofitParams.interceptors.add(new LoggerInterceptor2());
-                    retrofitParams.converterFactory = GsonConverterFactory.create();
+                    retrofitParams.converterFactory = FastJsonConverterFactory.create();
                     gsonService = createRetrofit(retrofitParams);
                 }
             }

@@ -10,13 +10,22 @@
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
-            android:text="@{itemInfo.name}"
-            android:layout_height="100px"/>
+            android:id="@+id/tv_name"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:background="#f00"
+            android:text="@{itemInfo.name}"/>
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:background="#f0f"
+            android:text='@{""+itemInfo.age}'/>
     </LinearLayout>
 </layout>
