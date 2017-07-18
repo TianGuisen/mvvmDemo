@@ -6,12 +6,14 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 
+import com.zhy.autolayout.AutoLayoutActivity;
+
 import tgs.com.mvvm.ActivityManager;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.utils.ToastUtil;
 import tgs.com.mvvm.weight.RotateLoading;
 
-public abstract class BaseActivity<D extends ViewDataBinding> extends MyAutoLayoutActivity implements BaseInterface {
+public abstract class BaseActivity<D extends ViewDataBinding> extends AutoLayoutActivity implements BaseInterface {
     private D bind;
     private BaseVM vm;
     

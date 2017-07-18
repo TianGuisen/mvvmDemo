@@ -70,6 +70,4 @@ dependencies {
     compile 'com.alibaba:fastjson:1.2.31'
     //屏幕适配
     compile 'com.zhy:autolayout:1.4.5'
-    compile 'me.yokeyword:fragmentation:1.0.7'
-   
 }
