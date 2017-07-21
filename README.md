@@ -6,3 +6,7 @@ mvvm框架demo。databinding+rxjava2+retrofit2。
 这个项目已经不维护，并且所依赖的另一个库版本过低，修改成新版也有bug。
 
 activity和fragment初始化ui和提供ui控制的方法，vm控制和处理业务，如果业务复杂，再写一层业务处理的类。
+
+封装了基于databinding的baseAdapter，不用去写viewHolder和一些普通adapter必须写的代码。如果不需要item中子view的点击事件，可以直接使用simpleAdaper，传入list，layout，BR。
+
+封装了rxjava和retrofit，有参数拦截器和日志拦截器，对返回结果进行统一封装处理，不用去单独控制loading，在rxSubscribe中进行统一管理。

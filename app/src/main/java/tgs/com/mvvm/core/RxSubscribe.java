@@ -25,10 +25,17 @@ public abstract class RxSubscribe<T> implements Subscriber<T> {
     private Context context;
     private RotateLoading loading;
     
-    public RxSubscribe(BaseInterface baseInterface) {
+    /**
+     * 
+     * @param baseInterface
+     * @param loading    是否显示进度条
+     */
+    public RxSubscribe(BaseInterface baseInterface, boolean loading) {
         
-        this.context =baseInterface.getBaseActivity();
-        this.loading = baseInterface.getLoading();
+        this.context = baseInterface.getBaseActivity();
+        if (loading) {
+            this.loading = baseInterface.getLoading();
+        }
     }
     
     @Override

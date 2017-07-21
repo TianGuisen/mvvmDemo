@@ -33,7 +33,7 @@ public class LoginVM extends BaseVM<ILogin> {
     
     public final ReplyCommand loginClick = new ReplyCommand(() -> {
         RetrofitUtil.getJson().login(username.get(), password.get()).compose(RxHelper.ioMain())
-                .subscribe(new RxSubscribe<String>(i) {
+                .subscribe(new RxSubscribe<String>(i,true) {
                     @Override
                     protected void next(String token) {
                         i.openActivity(MainAct.class);

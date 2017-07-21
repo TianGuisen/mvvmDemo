@@ -27,6 +27,7 @@ public class MyApplication extends Application {
             //指定为经典Header，默认是 贝塞尔雷达Header
             return new ClassicsHeader(context1).setSpinnerStyle(SpinnerStyle.Translate);
         });
+        
     }
     
     public static Context getAppContext() {
