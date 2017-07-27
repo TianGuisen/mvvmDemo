@@ -47,7 +47,7 @@ public class BindEditText extends android.support.v7.widget.AppCompatEditText {
     }
     
     @BindingAdapter(value = "focus")
-    public static void setDisplay(BindEditText view, boolean focus) {
+    public static void setFocus(BindEditText view, boolean focus) {
         if (focus) {
             view.requestFocus();
         } else {
@@ -56,7 +56,7 @@ public class BindEditText extends android.support.v7.widget.AppCompatEditText {
     }
     
     @InverseBindingAdapter(attribute = "focus", event = "focusAttrChanged")
-    public static boolean isDisplay(BindEditText view) {
+    public static boolean isFocus(BindEditText view) {
         return view.hasFocus();
     }
     
@@ -64,4 +64,7 @@ public class BindEditText extends android.support.v7.widget.AppCompatEditText {
     public static void setChangeListener(BindEditText aView, final InverseBindingListener focusAttrChange) {
         aView.setListener(focusAttrChange::onChange);
     }
+    
+    
+    
 }
