@@ -1,6 +1,5 @@
 package tgs.com.mvvm.core;
 
-import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.net.Uri;
 import android.support.annotation.IdRes;
@@ -11,7 +10,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -138,24 +136,6 @@ public final class ViewBindingAdapter {
             Uri uri = Uri.parse("res://" + AppUtils.getAppProcessName() + "/" + id);
             sdv.setImageURI(uri);
         }
-    }
-    
-    /**
-     * EditText焦点控制
-     */
-    @BindingAdapter({"requestFocus"})
-    public static void requestFocusCommand(EditText editText, final Boolean needRequestFocus) {
-        if (needRequestFocus) {
-            editText.setFocusableInTouchMode(true);
-            editText.setSelection(editText.getText().length());
-            editText.requestFocus();
-            InputMethodManager imm = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-        } else {
-            editText.setEnabled(false);
-            editText.setEnabled(true);
-        }
-        
     }
     
     /**
