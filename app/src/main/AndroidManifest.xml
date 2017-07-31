@@ -21,14 +21,14 @@
             android:value="1920">
         </meta-data>
         
-        <activity android:name=".view.LoginAct">
+        <activity android:name=".view.MainAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainAct"></activity>
+        <!--<activity android:name=".view.MainAct"></activity>-->
     </application>
 
 </manifest>

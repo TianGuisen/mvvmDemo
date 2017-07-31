@@ -1,25 +1,34 @@
 package tgs.com.mvvm.view;
 
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.base.BaseActivity;
 import tgs.com.mvvm.base.BaseVM;
+import tgs.com.mvvm.core.autolayout.AutoTabLayout;
 import tgs.com.mvvm.databinding.ActMainBinding;
 import tgs.com.mvvm.view.Iview.IMain;
 import tgs.com.mvvm.vm.MainVM;
-import tgs.com.mvvm.weight.UserAdapter;
+import tgs.com.mvvm.weight.MainPagerAdapter;
 
 
 public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
     
     private MainVM mainVM;
-    private UserAdapter userAdapter;
+    private List<Fragment> fragments;
     
     @Override
     protected int setBR() {
-        return BR.mainVM;
+        return BR.vm;
     }
     
     @Override
@@ -35,25 +44,32 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
     
     @Override
     public void init() {
-        getBind().rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        userAdapter = new UserAdapter(mainVM.list, R.layout.item, BR.itemInfo);
-        getBind().rv.setAdapter(userAdapter);
-        userAdapter.setItemClickCommand(mainVM.itemClick);
-        userAdapter.setChildClickCommand(mainVM.childClick);
-    }
-    
-    @Override
-    public void refreshComplete(boolean refresh,boolean success) {
-        if (refresh) {
-            getBind().srl.finishRefresh(success);
-        } else {
-            getBind().srl.finishLoadmore(success);
+        fragments = new ArrayList<>();
+        fragments.add(new RecyclerFg());
+        fragments.add(new LiveFg());
+        fragments.add(new RecommendFg());
+        fragments.add(new ZoneFg());
+        fragments.add(new DynamicFg());
+        
+        AutoTabLayout tablayout = getBind().tablayout;
+        ViewPager vpMain = getBind().vpMain;
+        for (int i = 0; i < fragments.size(); i++) {
+            tablayout.addTab(tablayout.newTab());
         }
-        notifyAdapter();
+        vpMain.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), fragments));
+        tablayout.setupWithViewPager(vpMain);
+        getBind().navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                return true;
+            }
+        });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //绑定Toolbar菜单
+        getMenuInflater().inflate(R.menu.toolbar_menu_index, menu);
+        return true;
     }
     
-    @Override
-    public void notifyAdapter() {
-        userAdapter.notifyDataSetChanged();
-    }
 }

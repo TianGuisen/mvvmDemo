@@ -98,4 +98,8 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends Fragment i
         return activity.getLoading();
     }
     
+    @Override
+    public void finish() {
+        getActivity().finish();
+    }
 }

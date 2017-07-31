@@ -5,9 +5,6 @@ import android.content.Context;
 
 import com.apkfuns.logutils.LogUtils;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.zhy.autolayout.config.AutoLayoutConifg;
 
 
@@ -22,11 +19,6 @@ public class MyApplication extends Application {
         Fresco.initialize(this);
         //设置log不带边框。tag为“tian”
         LogUtils.getLogConfig().configAllowLog(true).configShowBorders(false).configTagPrefix("tian");
-        
-        SmartRefreshLayout.setDefaultRefreshHeaderCreater((context1, layout) -> {
-            //指定为经典Header，默认是 贝塞尔雷达Header
-            return new ClassicsHeader(context1).setSpinnerStyle(SpinnerStyle.Translate);
-        });
         
     }
     

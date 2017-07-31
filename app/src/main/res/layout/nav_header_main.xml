@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="500px"
+              android:background="@color/colorAccent"
+              android:gravity="bottom"
+              android:orientation="vertical"
+              android:paddingBottom="40px"
+              android:paddingLeft="30px"
+              android:paddingRight="40px"
+              android:paddingTop="40px"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:paddingTop="40px"
+            android:src="@drawable/user_img"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:onClick="qiehuanyejian"
+            android:src="@drawable/ic_navigation_header_night"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="65dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_navigation_header_notification"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:paddingTop="40px"
+        android:text="田桂森"
+        android:textColor="@color/white"
+        android:textSize="30px"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:text="硬币：999999.0  B币：999999.0"/>
+
+</LinearLayout>

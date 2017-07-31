@@ -6,16 +6,15 @@
         <import type="tgs.com.mvvm.R.mipmap"></import>
 
         <variable
-            name="loginVM"
+            name="vm"
             type="tgs.com.mvvm.vm.LoginVM"></variable>
     </data>
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="tgs.com.mvvm.MainActivity">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +31,7 @@
                     android:id="@+id/user_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@={loginVM.username}"
+                    android:text="@={vm.username}"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -46,7 +45,7 @@
                     android:id="@+id/user_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@={loginVM.password}"
+                    android:text="@={vm.password}"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -54,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200px"
                 android:text="登录"
-                bind:click="@{loginVM.loginClick}"/>
+                bind:click="@{vm.loginClick}"/>
             
             <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="144px"
@@ -63,7 +62,7 @@
             <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="144px"
                 android:layout_height="144px"
-                bind:imageUrl="@{loginVM.img}"
+                bind:imageUrl="@{vm.img}"
                 />
         </LinearLayout>
 

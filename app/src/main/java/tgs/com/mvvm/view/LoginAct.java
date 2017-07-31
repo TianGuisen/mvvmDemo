@@ -13,7 +13,7 @@ public class LoginAct extends BaseActivity<ActLoginBinding> implements ILogin {
     
     @Override
     protected int setBR() {
-        return BR.loginVM;
+        return BR.vm;
     }
     
     @Override

@@ -1,30 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="mainVM"
+            name="vm"
             type="tgs.com.mvvm.vm.MainVM"></variable>
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical">
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
 
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/srl"
+        <android.support.design.widget.CoordinatorLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            bind:load="@{mainVM.loadData}">
+            android:fitsSystemWindows="true">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv"
+            <tgs.com.mvvm.core.autolayout.AutoAppBarLayout
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="360px"
+                android:background="@color/colorPrimary"
+                android:elevation="10dp"
+                >
+
+                <tgs.com.mvvm.core.autolayout.AutoCollapsingToolbarLayout
+                    android:id="@+id/toolbar_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:contentScrim="@color/colorPrimary"
+                    app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed"
+                    >
+
+                    <TextView
+                        android:id="@+id/imageview"
+                        android:layout_width="match_parent"
+                        android:layout_height="200px"
+                        android:text="个人资料"
+                        />
+
+                    <tgs.com.mvvm.core.autolayout.AutoToolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="160px"
+                        android:layout_gravity="bottom"
+                        app:contentInsetLeft="0dp"
+                        app:contentInsetStart="0dp"
+                        >
+
+                        <tgs.com.mvvm.core.autolayout.AutoTabLayout
+                            android:id="@+id/tablayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:tabIndicatorColor="@color/white"
+                            app:tabSelectedTextColor="@color/white"
+                            app:tabTextColor="@color/pinkFD"
+                            />
+                    </tgs.com.mvvm.core.autolayout.AutoToolbar>
+
+                </tgs.com.mvvm.core.autolayout.AutoCollapsingToolbarLayout>
+            </tgs.com.mvvm.core.autolayout.AutoAppBarLayout>
+
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#fff"
-                android:overScrollMode="never"/>
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    </LinearLayout>
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            </android.support.v4.view.ViewPager>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/flb_switch_mode"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="20px"
+                android:elevation="10dp"/>
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_main"
+            app:insetForeground="#00000000"
+            app:menu="@menu/activity_main_nav">
+        </android.support.design.widget.NavigationView>
+
+    </android.support.v4.widget.DrawerLayout>
+
 </layout>
