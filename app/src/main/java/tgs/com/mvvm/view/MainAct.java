@@ -3,7 +3,9 @@ package tgs.com.mvvm.view;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -25,6 +27,7 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
     
     private MainVM mainVM;
     private List<Fragment> fragments;
+    private DrawerLayout drawer;
     
     @Override
     protected int setBR() {
@@ -44,6 +47,9 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
     
     @Override
     public void init() {
+        AutoTabLayout tablayout = getBind().tablayout;
+        ViewPager vpMain = getBind().vpMain;
+        drawer = getBind().drawerLayout;
         fragments = new ArrayList<>();
         fragments.add(new RecyclerFg());
         fragments.add(new LiveFg());
@@ -51,8 +57,6 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
         fragments.add(new ZoneFg());
         fragments.add(new DynamicFg());
         
-        AutoTabLayout tablayout = getBind().tablayout;
-        ViewPager vpMain = getBind().vpMain;
         for (int i = 0; i < fragments.size(); i++) {
             tablayout.addTab(tablayout.newTab());
         }
@@ -61,6 +65,7 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
         getBind().navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                drawer.closeDrawer(GravityCompat.START);
                 return true;
             }
         });
@@ -71,5 +76,13 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
         getMenuInflater().inflate(R.menu.toolbar_menu_index, menu);
         return true;
     }
-    
+    @Override
+    public void onBackPressed() {
+        //如果打开侧滑，按返回键先退出侧滑再退出项目
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

@@ -9,8 +9,7 @@
               android:paddingBottom="40px"
               android:paddingLeft="30px"
               android:paddingRight="40px"
-              android:paddingTop="40px"
-    >
+              android:paddingTop="40px">
 
 
     <RelativeLayout
@@ -48,12 +47,12 @@
         android:paddingTop="40px"
         android:text="田桂森"
         android:textColor="@color/white"
-        android:textSize="30px"/>
+        android:textSize="50px"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30px"
-        android:text="硬币：999999.0  B币：999999.0"/>
+        android:text="硬币：1  B币：1"/>
 
 </LinearLayout>

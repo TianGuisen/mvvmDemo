@@ -3,7 +3,8 @@
 
     <group
         android:id="@+id/group1"
-        android:checkableBehavior="single">
+        android:checkableBehavior="single"
+        >
         <item
             android:id="@+id/nav_index"
             android:icon="@drawable/ic_nav_index"
@@ -32,7 +33,7 @@
 
     <group
         android:id="@+id/group2"
-        android:checkableBehavior="single">
+        >
         <item
             android:id="@+id/nav_vip"
             android:icon="@drawable/ic_nav_vip"
@@ -50,6 +51,6 @@
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_nav_settings"
-            android:title="设置与帮助" />
+            android:title="设置与帮助"/>
     </group>
 </menu>
