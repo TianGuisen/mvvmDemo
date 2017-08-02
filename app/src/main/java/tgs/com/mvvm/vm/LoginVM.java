@@ -3,6 +3,7 @@ package tgs.com.mvvm.vm;
 
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
+import android.view.View;
 
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.base.BaseInterface;
@@ -34,10 +35,10 @@ public class LoginVM extends BaseVM<ILogin> {
         password.set("112233");
     }
     
-    public final ReplyCommand imgClick = new ReplyCommand(() -> {
+    public final ReplyCommand<View> imgClick = new ReplyCommand<>(v -> {
         localImg.set(R.drawable.test_img1);
     });
-    public final ReplyCommand loginClick = new ReplyCommand(() -> {
+    public final ReplyCommand<View> loginClick = new ReplyCommand<>(v -> {
         RetrofitUtil.getJson().login(username.get(), password.get()).compose(RxHelper.ioMain())
                 .subscribe(new RxSubscribe<String>(i, true) {
                     @Override
