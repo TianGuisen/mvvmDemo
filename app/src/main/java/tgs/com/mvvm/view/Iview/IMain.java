@@ -7,5 +7,9 @@ import tgs.com.mvvm.base.BaseInterface;
  */
 
 public interface IMain extends BaseInterface {
-   
+    /**
+     * 控制抽屉开关
+     * @param show
+     */
+   void drawerSwitch(boolean show);
 }

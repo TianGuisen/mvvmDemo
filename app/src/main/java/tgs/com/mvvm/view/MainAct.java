@@ -56,33 +56,51 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
         fragments.add(new RecommendFg());
         fragments.add(new ZoneFg());
         fragments.add(new DynamicFg());
-        
         for (int i = 0; i < fragments.size(); i++) {
             tablayout.addTab(tablayout.newTab());
         }
         vpMain.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), fragments));
         tablayout.setupWithViewPager(vpMain);
+        
+        //菜单去除滚动条
+        getBind().navView.getChildAt(0).setVerticalScrollBarEnabled(false);
+        //菜单点击事件
         getBind().navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                drawer.closeDrawer(GravityCompat.START);
+                drawerSwitch(false);
                 return true;
             }
         });
+        //
+        setSupportActionBar(getBind().toolbar);
+        //去toolBar标题
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //绑定Toolbar菜单
         getMenuInflater().inflate(R.menu.toolbar_menu_index, menu);
         return true;
     }
+    
     @Override
     public void onBackPressed() {
         //如果打开侧滑，按返回键先退出侧滑再退出项目
         if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+            drawerSwitch(false);
         } else {
             super.onBackPressed();
+        }
+    }
+    
+    @Override
+    public void drawerSwitch(boolean show) {
+        if (show) {
+            drawer.openDrawer(GravityCompat.START);
+        } else {
+            drawer.closeDrawer(GravityCompat.START);
         }
     }
 }

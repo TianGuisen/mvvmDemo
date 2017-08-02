@@ -2,7 +2,9 @@ package tgs.com.mvvm.vm;
 
 
 import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 
+import tgs.com.mvvm.R;
 import tgs.com.mvvm.base.BaseInterface;
 import tgs.com.mvvm.base.BaseVM;
 import tgs.com.mvvm.core.ReplyCommand;
@@ -23,7 +25,8 @@ public class LoginVM extends BaseVM<ILogin> {
     
     public final ObservableField<String> username = new ObservableField("");
     public final ObservableField<String> password = new ObservableField("");
-    public final ObservableField<String> img = new ObservableField("https://avatars6.githubusercontent.com/u/19662707?v=4&s=40");
+    public final ObservableField<String> urlImg = new ObservableField("https://avatars6.githubusercontent.com/u/19662707?v=4&s=40");
+    public final ObservableInt localImg = new ObservableInt(R.drawable.ic_nav_star);
     
     @Override
     public void init() {
@@ -31,15 +34,18 @@ public class LoginVM extends BaseVM<ILogin> {
         password.set("112233");
     }
     
+    public final ReplyCommand imgClick = new ReplyCommand(() -> {
+        localImg.set(R.drawable.test_img1);
+    });
     public final ReplyCommand loginClick = new ReplyCommand(() -> {
         RetrofitUtil.getJson().login(username.get(), password.get()).compose(RxHelper.ioMain())
-                .subscribe(new RxSubscribe<String>(i,true) {
+                .subscribe(new RxSubscribe<String>(i, true) {
                     @Override
                     protected void next(String token) {
                         i.openActivity(MainAct.class);
                         i.finish();
                     }
-
+                    
                     @Override
                     protected void error(String message) {
                         i.openActivity(MainAct.class);

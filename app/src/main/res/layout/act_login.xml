@@ -3,7 +3,7 @@
 
     <data>
 
-        <import type="tgs.com.mvvm.R.mipmap"></import>
+        <import type="tgs.com.mvvm.R.drawable"></import>
 
         <variable
             name="vm"
@@ -54,16 +54,58 @@
                 android:layout_height="200px"
                 android:text="登录"
                 bind:click="@{vm.loginClick}"/>
-            
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用facebook加载本地例子(切换图片)"/>
+
             <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="144px"
                 android:layout_height="144px"
-                bind:imageLocal="@{mipmap.ic_launcher}"/>
+                bind:click="@{vm.imgClick}"
+                bind:imageLocal="@{vm.localImg}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用facebook加载本地例子"/>
+
             <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="144px"
                 android:layout_height="144px"
-                bind:imageUrl="@{vm.img}"
+                bind:imageLocal="@{drawable.ic_nav_star}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用facebook加载网络图片"/>
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="144px"
+                android:layout_height="144px"
+                bind:imageUrl="@{vm.urlImg}"
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用glide加载网络图片"/>
+
+            <ImageView
+                android:layout_width="144px"
+                android:layout_height="144px"
+                bind:imageUrl="@{vm.urlImg}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用gilde加载本地图片"/>
+
+            <ImageView
+                android:layout_width="144px"
+                android:layout_height="144px"
+                bind:imageUrl="@{drawable.ic_nav_star}"/>
         </LinearLayout>
 
         <tgs.com.mvvm.weight.RotateLoading

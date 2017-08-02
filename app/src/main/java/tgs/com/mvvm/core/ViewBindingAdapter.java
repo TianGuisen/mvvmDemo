@@ -12,8 +12,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
+import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -31,12 +33,12 @@ public final class ViewBindingAdapter {
      * 点击监听
      */
     @BindingAdapter({"click"})
-    public static void clickCommand(View view, final ReplyCommand clickCommand) {
+    public static void clickCommand(View view, final ReplyCommand<View> clickCommand) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (clickCommand != null) {
-                    clickCommand.execute();
+                    clickCommand.execute(v);
                 }
             }
         });
@@ -118,7 +120,7 @@ public final class ViewBindingAdapter {
     }
     
     /**
-     * 加载网络图片
+     * fresco加载网络图片
      */
     @BindingAdapter({"imageUrl"})
     public static void imageUri(SimpleDraweeView simpleDraweeView, String imageUrl) {
@@ -128,7 +130,7 @@ public final class ViewBindingAdapter {
     }
     
     /**
-     * 加载本地图片
+     * fresco加载本地图片
      */
     @BindingAdapter({"imageLocal"})
     public static void localImage(SimpleDraweeView sdv, @IdRes int id) {
@@ -136,6 +138,22 @@ public final class ViewBindingAdapter {
             Uri uri = Uri.parse("res://" + AppUtils.getAppProcessName() + "/" + id);
             sdv.setImageURI(uri);
         }
+    }
+    
+    /**
+     * glide加载网络图片
+     */
+    @BindingAdapter({"imageUrl"})
+    public static void imageUri(ImageView imageView, String imageUrl) {
+        Glide.with(imageView.getContext()).load(imageUrl).into(imageView);
+    }
+    
+    /**
+     * glide加载本地图片
+     */
+    @BindingAdapter({"imageUrl"})
+    public static void imageUri(ImageView imageView, int res) {
+        Glide.with(imageView.getContext()).load(res).into(imageView);
     }
     
     /**
