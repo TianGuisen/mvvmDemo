@@ -1,19 +1,25 @@
 package tgs.com.mvvm.base;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.View;
 
-import com.zhy.autolayout.AutoLayoutActivity;
+import com.zhy.autolayout.AutoFrameLayout;
+import com.zhy.autolayout.AutoLinearLayout;
+import com.zhy.autolayout.AutoRelativeLayout;
 
+import me.yokeyword.fragmentation.SupportActivity;
 import tgs.com.mvvm.ActivityManager;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.utils.ToastUtil;
 import tgs.com.mvvm.weight.RotateLoading;
 
-public abstract class BaseActivity<D extends ViewDataBinding> extends AutoLayoutActivity implements BaseInterface {
+public abstract class BaseActivity<D extends ViewDataBinding> extends SupportActivity implements BaseInterface {
     private D bind;
     private BaseVM vm;
     
@@ -27,9 +33,25 @@ public abstract class BaseActivity<D extends ViewDataBinding> extends AutoLayout
         init();
         vm.init();
     }
+    //autolayout适配用
+    @Override
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        View view = null;
+        if (name.equals("FrameLayout")) {
+            view = new AutoFrameLayout(context, attrs);
+        }
+        if (name.equals("LinearLayout")) {
+            view = new AutoLinearLayout(context, attrs);
+        }
+        if (name.equals("RelativeLayout")) {
+            view = new AutoRelativeLayout(context, attrs);
+        }
+        if (view != null) return view;
+        return super.onCreateView(name, context, attrs);
+    }
     
     /**
-     *  ui绘制完成后调用
+     * ui绘制完成后调用
      */
     public void init() {
         
@@ -74,7 +96,7 @@ public abstract class BaseActivity<D extends ViewDataBinding> extends AutoLayout
     
     @Override
     public void openActivityForResult(Class<?> pClass, int requestCode) {
-        openActivityForResult(pClass,null,requestCode);
+        openActivityForResult(pClass, null, requestCode);
     }
     
     @Override

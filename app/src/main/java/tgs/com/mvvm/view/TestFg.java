@@ -7,23 +7,23 @@ import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.base.BaseFragment;
 import tgs.com.mvvm.base.BaseVM;
-import tgs.com.mvvm.databinding.FgRecyclerBinding;
-import tgs.com.mvvm.view.Iview.IRecycler;
-import tgs.com.mvvm.vm.RecyclerVM;
+import tgs.com.mvvm.databinding.FgTestBinding;
+import tgs.com.mvvm.view.Iview.ITest;
+import tgs.com.mvvm.vm.TestVM;
 import tgs.com.mvvm.weight.UserAdapter;
 
 /**
  * Created by 田桂森 on 2017/7/31.
  */
 
-public class RecyclerFg extends BaseFragment<FgRecyclerBinding> implements IRecycler {
+public class TestFg extends BaseFragment<FgTestBinding> implements ITest {
     
-    private RecyclerVM vm;
+    private TestVM vm;
     private UserAdapter userAdapter;
     
-    public static RecyclerFg newInstance() {
+    public static TestFg newInstance() {
         Bundle args = new Bundle();
-        RecyclerFg fragment = new RecyclerFg();
+        TestFg fragment = new TestFg();
         fragment.setArguments(args);
         return fragment;
     }
@@ -35,20 +35,20 @@ public class RecyclerFg extends BaseFragment<FgRecyclerBinding> implements IRecy
     
     @Override
     protected BaseVM setVM() {
-        vm = new RecyclerVM(this);
+        vm = new TestVM(this);
         return vm;
     }
     
     @Override
     protected int setLayout() {
-        return R.layout.fg_recycler;
+        return R.layout.fg_test;
     }
     
     @Override
     public void init() {
      
         getBind().rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        userAdapter = new UserAdapter(vm.list, R.layout.item, BR.itemInfo);
+        userAdapter = new UserAdapter(vm.list, R.layout.item_test, BR.itemInfo);
         getBind().rv.setAdapter(userAdapter);
         userAdapter.setItemClickCommand(vm.itemClick);
         userAdapter.setChildClickCommand(vm.childClick);

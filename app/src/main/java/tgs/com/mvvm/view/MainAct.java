@@ -1,16 +1,9 @@
 package tgs.com.mvvm.view;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
-import android.view.MenuItem;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
@@ -26,7 +19,6 @@ import tgs.com.mvvm.weight.MainPagerAdapter;
 public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
     
     private MainVM mainVM;
-    private List<Fragment> fragments;
     private DrawerLayout drawer;
     
     @Override
@@ -50,29 +42,17 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
         AutoTabLayout tablayout = getBind().tablayout;
         ViewPager vpMain = getBind().vpMain;
         drawer = getBind().drawerLayout;
-        fragments = new ArrayList<>();
-        fragments.add(new RecyclerFg());
-        fragments.add(new LiveFg());
-        fragments.add(new RecommendFg());
-        fragments.add(new ZoneFg());
-        fragments.add(new DynamicFg());
-        for (int i = 0; i < fragments.size(); i++) {
+        for (int i = 0; i < 5; i++) {
             tablayout.addTab(tablayout.newTab());
         }
-        vpMain.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), fragments));
+        vpMain.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
         tablayout.setupWithViewPager(vpMain);
         
-        //菜单去除滚动条
+        //左侧菜单去除滚动条
         getBind().navView.getChildAt(0).setVerticalScrollBarEnabled(false);
-        //菜单点击事件
-        getBind().navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                drawerSwitch(false);
-                return true;
-            }
-        });
-        //
+        //左侧菜单点击事件
+        getBind().navView.setNavigationItemSelectedListener(mainVM);
+        //onCreateOptionsMenu执行需要这句话
         setSupportActionBar(getBind().toolbar);
         //去toolBar标题
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -86,12 +66,12 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
     }
     
     @Override
-    public void onBackPressed() {
+    public void onBackPressedSupport() {
         //如果打开侧滑，按返回键先退出侧滑再退出项目
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawerSwitch(false);
         } else {
-            super.onBackPressed();
+            super.onBackPressedSupport();
         }
     }
     

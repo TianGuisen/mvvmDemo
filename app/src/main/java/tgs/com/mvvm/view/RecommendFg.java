@@ -1,10 +1,12 @@
 package tgs.com.mvvm.view;
 
+import android.os.Bundle;
+
 import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.base.BaseFragment;
 import tgs.com.mvvm.base.BaseVM;
-import tgs.com.mvvm.databinding.FgRecyclerBinding;
+import tgs.com.mvvm.databinding.FgRecommendBinding;
 import tgs.com.mvvm.view.Iview.IRecommend;
 import tgs.com.mvvm.vm.RecommendVM;
 
@@ -12,8 +14,14 @@ import tgs.com.mvvm.vm.RecommendVM;
  * Created by 田桂森 on 2017/7/31.
  */
 
-public class RecommendFg extends BaseFragment<FgRecyclerBinding> implements IRecommend {
+public class RecommendFg extends BaseFragment<FgRecommendBinding> implements IRecommend {
     
+    public static RecommendFg newInstance() {
+        Bundle args = new Bundle();
+        RecommendFg fragment = new RecommendFg();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int setBR() {
         return BR.vm;

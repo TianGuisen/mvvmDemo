@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 /**
  * Created by 田桂森 on 2017/7/27.
  * 实现了使用ObservableBoolean监听和控制edittext的焦点。
+ * 使用editText无法实现这个功能，这是自定义双向绑定.
  * bind:focus="@={vm.?}"
  */
 

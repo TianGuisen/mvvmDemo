@@ -3,19 +3,21 @@
 
     <data>
 
+        <import type="tgs.com.mvvm.R.drawable"></import>
+
         <variable
             name="vm"
-            type="tgs.com.mvvm.vm.RecyclerVM"></variable>
+            type="tgs.com.mvvm.vm.TestVM"></variable>
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
-                  android:orientation="vertical">
-        
+                  android:orientation="horizontal">
+
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/srl"
-            android:layout_width="match_parent"
+            android:layout_width="400px"
             android:layout_height="match_parent"
             bind:load="@{vm.loadData}">
 
@@ -26,5 +28,75 @@
                 android:background="#fff"
                 android:overScrollMode="never"/>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用facebook加载本地例子(点击切换图片)"/>
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="144px"
+                android:layout_height="144px"
+                bind:click="@{vm.imgClick}"
+                bind:imageLocal="@{vm.localImg}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用facebook加载本地例子"/>
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="144px"
+                android:layout_height="144px"
+                bind:imageLocal="@{drawable.ic_nav_star}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用facebook加载网络图片"/>
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="144px"
+                android:layout_height="144px"
+                bind:imageUrl="@{vm.urlImg}"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用glide加载网络图片"/>
+
+            <ImageView
+                android:layout_width="144px"
+                android:layout_height="144px"
+                bind:imageUrl="@{vm.urlImg}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用gilde加载本地图片"/>
+
+            <ImageView
+                android:layout_width="144px"
+                android:layout_height="144px"
+                bind:imageUrl="@{drawable.ic_nav_star}"/>
+
+            <tgs.com.mvvm.core.BindEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={vm.editText}"
+                bind:focus="@={vm.focus}"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                bind:click="@{vm.focusClick}"
+                android:text="点击使edittext获取焦点"/>
+        </LinearLayout>
     </LinearLayout>
 </layout>

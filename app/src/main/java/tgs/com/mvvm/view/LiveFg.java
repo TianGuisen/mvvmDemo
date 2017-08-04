@@ -1,5 +1,7 @@
 package tgs.com.mvvm.view;
 
+import android.os.Bundle;
+
 import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.base.BaseFragment;
@@ -14,6 +16,12 @@ import tgs.com.mvvm.vm.LiveVM;
 
 public class LiveFg extends BaseFragment<FgLiveBinding> implements ILive {
     
+    public static LiveFg newInstance() {
+        Bundle args = new Bundle();
+        LiveFg fragment = new LiveFg();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int setBR() {
         return BR.vm;

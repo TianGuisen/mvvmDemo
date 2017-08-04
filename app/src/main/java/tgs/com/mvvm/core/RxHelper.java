@@ -11,6 +11,7 @@ import io.reactivex.FlowableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import tgs.com.mvvm.base.BaseBean;
+
 /**
  * Created by 田桂森 on 2017/3/25.
  * 转化线程和处理结果
@@ -21,8 +22,9 @@ public class RxHelper {
      * 订阅在io,观察在main
      */
     public static <T> FlowableTransformer<BaseBean<T>, T> ioMain() {
+      
         return baseEntityObservable -> baseEntityObservable.flatMap(result -> {
-            if (result.getCode() == 1) {
+            if (result.getCode() == 0) {
                 return createDate(result.getData());
             } else {
                 return Flowable.error(new Exception(result.getMessage().toString()));
@@ -43,12 +45,12 @@ public class RxHelper {
     private static <T> Flowable<T> createDate(T data) {
         return Flowable.create(new FlowableOnSubscribe<T>() {
             @Override
-            public void subscribe(FlowableEmitter<T> e) throws Exception {
+            public void subscribe(FlowableEmitter<T> fe) {
                 try {
-                    e.onNext(data);
-                    e.onComplete();
-                } catch (Exception ex) {
-                    e.onError(ex);
+                    fe.onNext(data);
+                    fe.onComplete();
+                } catch (Exception e) {
+                    fe.onError(e);
                 }
             }
         }, BackpressureStrategy.BUFFER);

@@ -5,11 +5,11 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import me.yokeyword.fragmentation.SupportFragment;
 import tgs.com.mvvm.ActivityManager;
 import tgs.com.mvvm.utils.ToastUtil;
 import tgs.com.mvvm.weight.RotateLoading;
@@ -18,20 +18,26 @@ import tgs.com.mvvm.weight.RotateLoading;
 /**
  * Created by 田桂森 on 2016/11/9.
  */
-public abstract class BaseFragment<D extends ViewDataBinding> extends Fragment implements BaseInterface {
+public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFragment implements BaseInterface {
     
     private D bind;
-    private BaseVM viewModel;
+    private BaseVM vm;
     
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         bind = DataBindingUtil.inflate(inflater, setLayout(), container, false);
-        bind.setVariable(setBR(), viewModel = setVM());
+        bind.setVariable(setBR(), vm = setVM());
         init();
-        viewModel.init();
+        vm.init();
         setUserVisibleHint(true);
         return bind.getRoot();
+    }
+    
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        vm.lazyInit();
     }
     
     protected abstract BaseVM setVM();
@@ -51,7 +57,7 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends Fragment i
     @Override
     public void onDestroy() {
         super.onDestroy();
-        viewModel.onDestroy();
+        vm.onDestroy();
     }
     
     @Override

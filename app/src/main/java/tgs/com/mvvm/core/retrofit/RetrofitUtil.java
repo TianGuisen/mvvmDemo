@@ -1,4 +1,4 @@
-package tgs.com.mvvm.core;
+package tgs.com.mvvm.core.retrofit;
 
 
 import java.io.File;
@@ -77,6 +77,7 @@ public class RetrofitUtil {
                 if (gsonService == null) {
                     RetrofitParams retrofitParams = new RetrofitParams();
                     retrofitParams.interceptors.add(new ParamInterceptor());
+                    retrofitParams.interceptors.add(new CacheInterceptor());
                     retrofitParams.interceptors.add(new LoggerInterceptor2());
                     retrofitParams.converterFactory = FastJsonConverterFactory.create();
                     gsonService = createRetrofit(retrofitParams);

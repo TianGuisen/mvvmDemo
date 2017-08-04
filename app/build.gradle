@@ -52,7 +52,7 @@ dependencies {
     compile 'com.apkfuns.logutils:library:1.5.1.1'
     //rx
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.1'
     compile 'lib.gorden.rxbus2:rxbus:2.0.1'
     compile 'io.reactivex:rxjava:1.2.10'
     //retrofit
@@ -73,4 +73,6 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:4.0.0'
     //圆形头像
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    //fragment
+    compile 'me.yokeyword:fragmentation:1.1.0'
 }

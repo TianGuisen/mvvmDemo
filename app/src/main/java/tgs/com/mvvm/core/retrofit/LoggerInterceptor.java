@@ -1,4 +1,4 @@
-package tgs.com.mvvm.core;
+package tgs.com.mvvm.core.retrofit;
 
 import android.util.Log;
 

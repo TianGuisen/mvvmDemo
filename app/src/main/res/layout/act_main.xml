@@ -92,6 +92,10 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="20px"
                 android:elevation="10dp"/>
+            <tgs.com.mvvm.weight.RotateLoading
+                android:id="@+id/loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </android.support.design.widget.CoordinatorLayout>
 
         <android.support.design.widget.NavigationView

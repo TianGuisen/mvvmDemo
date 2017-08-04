@@ -1,5 +1,7 @@
 package tgs.com.mvvm.view;
 
+import android.os.Bundle;
+
 import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.base.BaseFragment;
@@ -13,7 +15,12 @@ import tgs.com.mvvm.vm.DynamicVM;
  */
 
 public class DynamicFg extends BaseFragment<FgDynamicBinding> implements IRecommend {
-    
+    public static DynamicFg newInstance() {
+        Bundle args = new Bundle();
+        DynamicFg fragment = new DynamicFg();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int setBR() {
         return BR.vm;

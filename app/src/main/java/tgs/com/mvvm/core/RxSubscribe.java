@@ -1,6 +1,7 @@
 package tgs.com.mvvm.core;
 
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.apkfuns.logutils.LogUtils;
@@ -12,7 +13,6 @@ import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 
 import retrofit2.HttpException;
-import tgs.com.mvvm.base.BaseInterface;
 import tgs.com.mvvm.utils.NetUtil;
 import tgs.com.mvvm.utils.ToastUtil;
 import tgs.com.mvvm.weight.RotateLoading;
@@ -26,20 +26,17 @@ public abstract class RxSubscribe<T> implements Subscriber<T> {
     private RotateLoading loading;
     
     /**
-     * 
-     * @param baseInterface
-     * @param loading    是否显示进度条
+     * @param context 为null不显示toast
+     * @param loading 为null不显示loading
      */
-    public RxSubscribe(BaseInterface baseInterface, boolean loading) {
-        
-        this.context = baseInterface.getBaseActivity();
-        if (loading) {
-            this.loading = baseInterface.getLoading();
-        }
+    public RxSubscribe(Activity context, RotateLoading loading) {
+        this.context = context;
+        this.loading = loading;
     }
     
     @Override
     public void onSubscribe(Subscription s) {
+        LogUtils.d(s);
         if (!NetUtil.isConnected()) {
             if (null != context) ToastUtil.showToast(context, "网络异常");
             return;
@@ -68,12 +65,12 @@ public abstract class RxSubscribe<T> implements Subscriber<T> {
                 ToastUtil.showToast(context, "服务器异常,请稍后再试");
             } else {
                 LogUtils.d(e);
-                error(e.getMessage());
             }
         }
         if (loading != null) {
             loading.stop();
         }
+        error(e.getMessage());
     }
     
     @Override
