@@ -1,5 +1,6 @@
 package tgs.com.mvvm.view;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 
 import tgs.com.mvvm.BR;
@@ -20,6 +21,13 @@ public class RecyclerFg extends BaseFragment<FgRecyclerBinding> implements IRecy
     private RecyclerVM vm;
     private UserAdapter userAdapter;
     
+    public static RecyclerFg newInstance() {
+        Bundle args = new Bundle();
+        RecyclerFg fragment = new RecyclerFg();
+        fragment.setArguments(args);
+        return fragment;
+    }
+    
     @Override
     protected int setBR() {
         return BR.vm;
@@ -38,6 +46,7 @@ public class RecyclerFg extends BaseFragment<FgRecyclerBinding> implements IRecy
     
     @Override
     public void init() {
+     
         getBind().rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         userAdapter = new UserAdapter(vm.list, R.layout.item, BR.itemInfo);
         getBind().rv.setAdapter(userAdapter);
@@ -46,7 +55,7 @@ public class RecyclerFg extends BaseFragment<FgRecyclerBinding> implements IRecy
     }
     
     @Override
-    public void refreshComplete(boolean refresh,boolean success) {
+    public void refreshComplete(boolean refresh, boolean success) {
         if (refresh) {
             getBind().srl.finishRefresh(success);
         } else {

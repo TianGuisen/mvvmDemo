@@ -16,7 +16,7 @@ public class ParamInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request orgRequest = chain.request();
         HttpUrl url = orgRequest.url().newBuilder()
-                .addQueryParameter("device_id", "123456789")
+//                .addQueryParameter("device_id", "123456789")
                 .build();
         Request newOrgRequest = chain.request().newBuilder()
                 .url(url)
