@@ -3,7 +3,7 @@ package tgs.com.mvvm;
 
 import java.util.List;
 
-import io.reactivex.Flowable;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import tgs.com.mvvm.base.BaseBean;
 import tgs.com.mvvm.bean.BannerInfo;
@@ -14,6 +14,5 @@ import tgs.com.mvvm.bean.BannerInfo;
 
 public interface RetrofitService {
     @GET("x/banner?plat=4&build=411007&channel=bilih5")
-    Flowable<BaseBean<List<BannerInfo>>> getBannerInfo();
-    
+    Observable<BaseBean<List<BannerInfo>>> getBannerInfo();
 }

@@ -4,6 +4,7 @@ import android.databinding.BaseObservable;
 
 import gorden.rxbus2.RxBus;
 
+
 /**
  * Created by 田桂森 on 2017/4/17.
  */

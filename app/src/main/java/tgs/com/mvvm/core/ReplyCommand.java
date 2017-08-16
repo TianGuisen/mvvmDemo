@@ -7,11 +7,12 @@ import rx.functions.Action1;
 import rx.functions.Action3;
 import rx.functions.Func0;
 
+
 /**
  * Created by kelin on 15-8-4.
  */
 public class ReplyCommand<T> {
-    
+   
     private Action0 execute0;
     private Action1<T> execute1;
     private Action3<T, View, Integer> execute3;
