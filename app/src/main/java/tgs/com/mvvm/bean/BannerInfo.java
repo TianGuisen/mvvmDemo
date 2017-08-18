@@ -3,18 +3,7 @@ package tgs.com.mvvm.bean;
 /**
  * Created by 田桂森 on 2017/8/3.
  */
-
 public class BannerInfo {
-    
-    /**
-     * title : 游戏还原大赛
-     * value : http://www.bilibili.com/blackboard/activity-ByaLbQ3IZ.html
-     * image : http://i0.hdslb.com/bfs/archive/0659ef3ef7bed6eaea5a0f74490c5991c43f4ecb.jpg
-     * type : 2
-     * weight : 1
-     * remark :
-     * hash : 6109f76e167a0dcbeb7146f8939d5196
-     */
     
     private String title;
     private String value;
@@ -23,6 +12,19 @@ public class BannerInfo {
     private int weight;
     private String remark;
     private String hash;
+    
+    @Override
+    public String toString() {
+        return "BannerInfo{" +
+                "title='" + title + '\'' +
+                ", value='" + value + '\'' +
+                ", image='" + image + '\'' +
+                ", type=" + type +
+                ", weight=" + weight +
+                ", remark='" + remark + '\'' +
+                ", hash='" + hash + '\'' +
+                '}';
+    }
     
     public String getTitle() {
         return title;
@@ -78,18 +80,5 @@ public class BannerInfo {
     
     public void setHash(String hash) {
         this.hash = hash;
-    }
-    
-    @Override
-    public String toString() {
-        return "BannerInfo{" +
-                "title='" + title + '\'' +
-                ", value='" + value + '\'' +
-                ", image='" + image + '\'' +
-                ", type=" + type +
-                ", weight=" + weight +
-                ", remark='" + remark + '\'' +
-                ", hash='" + hash + '\'' +
-                '}';
     }
 }

@@ -57,7 +57,7 @@ public class RetrofitUtil {
         private Converter.Factory converterFactory = ScalarsConverterFactory.create();
     }
     
-    public static RetrofitService getStringLive() {
+    public static RetrofitService getString() {
         if (stringService == null) {
             synchronized (RetrofitUtil.class) {
                 if (stringService == null) {

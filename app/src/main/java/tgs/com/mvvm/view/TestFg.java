@@ -5,12 +5,11 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.base.BaseFragment;
-import tgs.com.mvvm.base.BaseVM;
+import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.databinding.FgTestBinding;
 import tgs.com.mvvm.view.Iview.ITest;
 import tgs.com.mvvm.vm.TestVM;
-import tgs.com.mvvm.weight.UserAdapter;
+import tgs.com.mvvm.weight.adapter.TestAdapter;
 
 /**
  * Created by 田桂森 on 2017/7/31.
@@ -19,7 +18,7 @@ import tgs.com.mvvm.weight.UserAdapter;
 public class TestFg extends BaseFragment<FgTestBinding> implements ITest {
     
     private TestVM vm;
-    private UserAdapter userAdapter;
+    private TestAdapter testAdapter;
     
     public static TestFg newInstance() {
         Bundle args = new Bundle();
@@ -48,10 +47,10 @@ public class TestFg extends BaseFragment<FgTestBinding> implements ITest {
     public void init() {
      
         getBind().rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        userAdapter = new UserAdapter(vm.list, R.layout.item_test, BR.itemInfo);
-        getBind().rv.setAdapter(userAdapter);
-        userAdapter.setItemClickCommand(vm.itemClick);
-        userAdapter.setChildClickCommand(vm.childClick);
+        testAdapter = new TestAdapter(vm.list, R.layout.item_test);
+        getBind().rv.setAdapter(testAdapter);
+        testAdapter.setItemClickCommand(vm.itemClick);
+        testAdapter.setChildClickCommand(vm.childClick);
     }
     
     @Override
@@ -66,7 +65,7 @@ public class TestFg extends BaseFragment<FgTestBinding> implements ITest {
     
     @Override
     public void notifyAdapter() {
-        userAdapter.notifyDataSetChanged();
+        testAdapter.notifyDataSetChanged();
     }
     
 }

@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.base.BaseInterface;
-import tgs.com.mvvm.base.BaseVM;
+import tgs.com.mvvm.view.Iview.BaseInterface;
 import tgs.com.mvvm.bean.ItemInfo;
 import tgs.com.mvvm.core.ReplyCommand;
 import tgs.com.mvvm.view.Iview.ITest;

@@ -5,7 +5,7 @@
 
         <variable
             name="item"
-            type="tgs.com.mvvm.bean.ItemInfo"></variable>
+            type="tgs.com.mvvm.bean.ItemInfo"/>
     </data>
 
     <LinearLayout
@@ -18,14 +18,14 @@
             android:id="@+id/tv_name"
             android:layout_width="200px"
             android:layout_height="200px"
-            android:background="#f00"
+            android:background="#00f"
             android:text="@{item.name}"/>
 
         <TextView
             android:id="@+id/tv_age"
             android:layout_width="200px"
             android:layout_height="200px"
-            android:background="#f0f"
+            android:background="#0ff"
             android:text='@{""+item.age}'/>
     </LinearLayout>
 </layout>

@@ -3,7 +3,6 @@ package tgs.com.mvvm.bean;
 /**
  * Created by 田桂森 on 2017/7/17.
  */
-
 public class ItemInfo {
     private String name;
     private int age;

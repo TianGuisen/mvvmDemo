@@ -1,8 +1,7 @@
-package tgs.com.mvvm.weight;
+package tgs.com.mvvm.weight.adapter;
 
 import java.util.List;
 
-import tgs.com.mvvm.base.BaseAdapter;
 import tgs.com.mvvm.bean.ItemInfo;
 import tgs.com.mvvm.databinding.ItemTestBinding;
 
@@ -11,14 +10,15 @@ import tgs.com.mvvm.databinding.ItemTestBinding;
  * child点击事件用法,如果不需要child点击，用simpleAdapter即可。
  */
 
-public class UserAdapter extends BaseAdapter<ItemInfo, ItemTestBinding> {
-    public UserAdapter(List<ItemInfo> datas, int layoutID, int BR) {
-        super(datas, layoutID, BR);
+public class TestAdapter extends SigleBaseAdapter<ItemInfo, ItemTestBinding> {
+
+    public TestAdapter(List<ItemInfo> datas, int layoutId) {
+        super(datas, layoutId);
     }
-    
+
     @Override
-    protected void setExtension(ItemInfo bean, ViewHolder holder, int position) {
-        ItemTestBinding binding = holder.getBinding();
+    public void decorator(ItemInfo bean, BaseAdapter.BindViewHolder holder, int position) {
+        ItemTestBinding binding = (ItemTestBinding) holder.binding;
         binding.tvName.setOnClickListener(v -> childClick.execute(bean, binding.tvName, position));
         binding.tvAge.setOnClickListener(v -> childClick.execute(bean, binding.tvAge, position));
     }

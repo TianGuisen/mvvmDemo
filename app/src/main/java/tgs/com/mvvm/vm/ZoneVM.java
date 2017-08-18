@@ -1,7 +1,6 @@
 package tgs.com.mvvm.vm;
 
-import tgs.com.mvvm.base.BaseInterface;
-import tgs.com.mvvm.base.BaseVM;
+import tgs.com.mvvm.view.Iview.BaseInterface;
 import tgs.com.mvvm.view.Iview.IZone;
 
 /**

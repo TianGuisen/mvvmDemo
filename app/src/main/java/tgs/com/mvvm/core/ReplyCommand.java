@@ -4,6 +4,7 @@ import android.view.View;
 
 import rx.functions.Action0;
 import rx.functions.Action1;
+import rx.functions.Action2;
 import rx.functions.Action3;
 import rx.functions.Func0;
 
@@ -15,6 +16,7 @@ public class ReplyCommand<T> {
    
     private Action0 execute0;
     private Action1<T> execute1;
+    private Action2<T,Integer> execute2;
     private Action3<T, View, Integer> execute3;
     
     private Func0<Boolean> canExecute0;
@@ -27,6 +29,9 @@ public class ReplyCommand<T> {
         this.execute1 = execute;
     }
     
+    public ReplyCommand(Action2<T, Integer> execute2) {
+        this.execute2 = execute2;
+    }
     
     public ReplyCommand(Action3<T, View, Integer> execute3) {
         this.execute3 = execute3;

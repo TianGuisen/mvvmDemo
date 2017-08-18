@@ -5,8 +5,7 @@ import android.support.design.widget.NavigationView;
 import android.view.MenuItem;
 import android.view.View;
 
-import tgs.com.mvvm.base.BaseInterface;
-import tgs.com.mvvm.base.BaseVM;
+import tgs.com.mvvm.view.Iview.BaseInterface;
 import tgs.com.mvvm.core.ReplyCommand;
 import tgs.com.mvvm.view.Iview.IMain;
 

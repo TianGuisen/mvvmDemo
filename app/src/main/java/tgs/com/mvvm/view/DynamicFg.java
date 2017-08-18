@@ -4,17 +4,16 @@ import android.os.Bundle;
 
 import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.base.BaseFragment;
-import tgs.com.mvvm.base.BaseVM;
+import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.databinding.FgDynamicBinding;
-import tgs.com.mvvm.view.Iview.IRecommend;
+import tgs.com.mvvm.view.Iview.ITest2;
 import tgs.com.mvvm.vm.DynamicVM;
 
 /**
  * Created by 田桂森 on 2017/7/31.
  */
 
-public class DynamicFg extends BaseFragment<FgDynamicBinding> implements IRecommend {
+public class DynamicFg extends BaseFragment<FgDynamicBinding> implements ITest2 {
     public static DynamicFg newInstance() {
         Bundle args = new Bundle();
         DynamicFg fragment = new DynamicFg();

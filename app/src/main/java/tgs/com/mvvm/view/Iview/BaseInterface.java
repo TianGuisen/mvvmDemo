@@ -1,7 +1,8 @@
-package tgs.com.mvvm.base;
+package tgs.com.mvvm.view.Iview;
 
 import android.os.Bundle;
 
+import tgs.com.mvvm.view.BaseActivity;
 import tgs.com.mvvm.weight.RotateLoading;
 
 

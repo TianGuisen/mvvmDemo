@@ -12,26 +12,25 @@ import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.bean.ItemInfo;
-import tgs.com.mvvm.databinding.FgLiveBinding;
-import tgs.com.mvvm.view.Iview.ILive;
-import tgs.com.mvvm.vm.LiveVM;
+import tgs.com.mvvm.databinding.FgTest2Binding;
+import tgs.com.mvvm.view.Iview.ITest2;
+import tgs.com.mvvm.vm.Test2VM;
 import tgs.com.mvvm.weight.adapter.Test2Adapter;
 
 /**
  * Created by 田桂森 on 2017/7/31.
  */
 
-public class LiveFg extends BaseFragment<FgLiveBinding> implements ILive {
+public class Test2Fg extends BaseFragment<FgTest2Binding> implements ITest2 {
     
-    private LiveVM vm;
+    private Test2VM vm;
     
-    public static LiveFg newInstance() {
+    public static Test2Fg newInstance() {
         Bundle args = new Bundle();
-        LiveFg fragment = new LiveFg();
+        Test2Fg fragment = new Test2Fg();
         fragment.setArguments(args);
         return fragment;
     }
-    
     @Override
     protected int setBR() {
         return BR.vm;
@@ -39,13 +38,13 @@ public class LiveFg extends BaseFragment<FgLiveBinding> implements ILive {
     
     @Override
     protected BaseVM setVM() {
-        vm = new LiveVM(this);
+        vm = new Test2VM(this);
         return vm;
     }
     
     @Override
     protected int setLayout() {
-        return R.layout.fg_live;
+        return R.layout.fg_test2;
     }
     
     @Override

@@ -1,8 +1,9 @@
-package tgs.com.mvvm.base;
+package tgs.com.mvvm.vm;
 
 import android.databinding.BaseObservable;
 
 import gorden.rxbus2.RxBus;
+import tgs.com.mvvm.view.Iview.BaseInterface;
 
 
 /**

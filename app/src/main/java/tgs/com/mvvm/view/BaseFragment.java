@@ -1,4 +1,4 @@
-package tgs.com.mvvm.base;
+package tgs.com.mvvm.view;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import me.yokeyword.fragmentation.SupportFragment;
 import tgs.com.mvvm.ActivityManager;
+import tgs.com.mvvm.view.Iview.BaseInterface;
+import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.utils.ToastUtil;
 import tgs.com.mvvm.weight.RotateLoading;
 

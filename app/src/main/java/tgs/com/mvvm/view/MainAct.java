@@ -7,13 +7,12 @@ import android.view.Menu;
 
 import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.base.BaseActivity;
-import tgs.com.mvvm.base.BaseVM;
+import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.core.autolayout.AutoTabLayout;
 import tgs.com.mvvm.databinding.ActMainBinding;
 import tgs.com.mvvm.view.Iview.IMain;
 import tgs.com.mvvm.vm.MainVM;
-import tgs.com.mvvm.weight.MainPagerAdapter;
+import tgs.com.mvvm.weight.adapter.MainPagerAdapter;
 
 
 public class MainAct extends BaseActivity<ActMainBinding> implements IMain {

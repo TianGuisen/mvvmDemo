@@ -1,4 +1,4 @@
-package tgs.com.mvvm.base;
+package tgs.com.mvvm.view;
 
 
 import android.content.Context;
@@ -16,6 +16,8 @@ import com.zhy.autolayout.AutoRelativeLayout;
 import me.yokeyword.fragmentation.SupportActivity;
 import tgs.com.mvvm.ActivityManager;
 import tgs.com.mvvm.R;
+import tgs.com.mvvm.view.Iview.BaseInterface;
+import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.utils.ToastUtil;
 import tgs.com.mvvm.weight.RotateLoading;
 

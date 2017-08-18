@@ -4,8 +4,7 @@ import android.os.Bundle;
 
 import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.base.BaseFragment;
-import tgs.com.mvvm.base.BaseVM;
+import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.databinding.FgZoneBinding;
 import tgs.com.mvvm.view.Iview.IZone;
 import tgs.com.mvvm.vm.ZoneVM;
