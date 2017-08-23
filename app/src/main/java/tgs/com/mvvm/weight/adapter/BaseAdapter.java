@@ -4,6 +4,7 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.apkfuns.logutils.LogUtils;
 import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.List;

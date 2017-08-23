@@ -5,4 +5,11 @@
     <color name="colorAccent">#FA7199</color>
     <color name="pinkFD">#FDC5D5</color>
     <color name="white">#fff</color>
+    <color name="gray_80">#BEBBB4</color>
+    <color name="font_normal">#555555</color>
+    <color name="colorYellow">#FFFFD11D</color>
+    <color name="transGray">#99AAAAAA</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorLightTransGray">#66BABABA</color>
+    <color name="colorTextGray">#FF797979</color>
 </resources>

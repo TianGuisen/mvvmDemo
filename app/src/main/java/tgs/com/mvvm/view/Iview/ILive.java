@@ -5,4 +5,5 @@ package tgs.com.mvvm.view.Iview;
  */
 
 public interface ILive extends BaseInterface{
+    void initAdapter();
 }

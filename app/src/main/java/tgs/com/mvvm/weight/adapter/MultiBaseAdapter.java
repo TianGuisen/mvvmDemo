@@ -34,11 +34,18 @@ public abstract class MultiBaseAdapter extends BaseAdapter<Object, ViewDataBindi
         }
     }
     
+    @Override
     public BindViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), mItemTypeLayoutMap.get(viewType), parent, false);
+        onCreateViewHolderDecorate(binding, viewType);
         return new BindViewHolder(binding.getRoot(), binding);
     }
     
+    public void onCreateViewHolderDecorate(ViewDataBinding view, int viewType) {
+        
+    }
+    
+    @Override
     public int getItemViewType(int position) {
         return mResLayout.get(position);
     }
@@ -47,29 +54,29 @@ public abstract class MultiBaseAdapter extends BaseAdapter<Object, ViewDataBindi
         mItemTypeLayoutMap.put(viewType, layoutRes);
     }
     
-    public void set(List<Object> datas, int viewType) {
+    public void set(int viewType, List<Object> datas) {
         this.mDatas.clear();
         mResLayout.clear();
         if (datas == null) {
-            add(null, viewType);
+            add(viewType, null);
         } else {
-            addAll(datas, viewType);
+            addAll(viewType, datas);
         }
     }
     
-    public void add(Object data, int viewType) {
+    public void add(int viewType, Object data) {
         mDatas.add(data);
         mResLayout.add(viewType);
         notifyItemInserted(0);
     }
     
-    public void add(int position, Object data, int viewType) {
+    public void add(int position, int viewType, Object data) {
         mDatas.add(position, data);
         mResLayout.add(position, viewType);
         notifyItemInserted(position);
     }
     
-    public void addAll(List datas, int viewType) {
+    public void addAll(int viewType, List datas) {
         this.mDatas.addAll(datas);
         for (int i = 0; i < datas.size(); ++i) {
             mResLayout.add(viewType);
@@ -77,7 +84,7 @@ public abstract class MultiBaseAdapter extends BaseAdapter<Object, ViewDataBindi
         notifyDataSetChanged();
     }
     
-    public void addAll(int position, List datas, int viewType) {
+    public void addAll(int position, int viewType, List datas) {
         this.mDatas.addAll(position, datas);
         for (int i = 0; i < datas.size(); i++) {
             mResLayout.add(position + i, viewType);

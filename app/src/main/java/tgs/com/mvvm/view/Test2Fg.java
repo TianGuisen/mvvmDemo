@@ -64,8 +64,8 @@ public class Test2Fg extends BaseFragment<FgTest2Binding> implements ITest2 {
             ItemInfo itemInfo = new ItemInfo("b",i*2);
             itemInfos1.add(itemInfo);
         }
-        test2Adapter.addAll(itemInfos0,0);
-        test2Adapter.addAll(itemInfos1,1);
+        test2Adapter.addAll(0,itemInfos0);
+        test2Adapter.addAll(1,itemInfos1);
         getBind().rv.setAdapter(test2Adapter);
         test2Adapter.setItemClickCommand(vm.itemClick);
         test2Adapter.setChildClickCommand(vm.childClick);

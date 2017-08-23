@@ -18,12 +18,15 @@ public class RxHelper2 {
      */
     public static <T> ObservableTransformer<BaseBean<T>, T> ioMain() {
         return baseEntityObservable -> baseEntityObservable.flatMap(result -> {
-//             
+            
+//             如果后台返回message就这样。
 //            if (result.getCode() == 0) {
 //                return createDate(result.getData());
 //            } else {
 //                return Observable.error(new Exception(result.getMessage().toString()));
 //            }
+            
+            //如果后台不返回message，就需要向下面这样自己定义错误message。
             switch (result.getCode()) {
                 case 0:
                     return createDate(result.getData());

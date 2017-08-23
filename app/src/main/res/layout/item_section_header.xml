@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+    </data>
+
+    <RelativeLayout android:id="@+id/rl_section_header"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="6px"
+                    android:paddingStart="6px">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="75px"
+            android:layout_height="75px"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/iv_icon"
+            android:padding="12px"
+            android:textColor="@color/font_normal"
+            android:textSize="36px"/>
+
+        <TextView
+            android:id="@+id/tv_head_ladder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_round_corner_yellow_rect"
+            android:drawablePadding="4dp"
+            android:drawableStart="@drawable/ic_header_indicator_rank"
+            android:padding="12px"
+            android:text="排行榜"
+            android:textColor="@color/white"
+            android:textSize="36px"/>
+
+        <TextView
+            android:id="@+id/tv_head_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_round_corner_gray_rect"
+            android:padding="12px"
+            android:text="进去看看"
+            android:textColor="@color/white"
+            android:textSize="36px"/>
+
+    </RelativeLayout>
+</layout>

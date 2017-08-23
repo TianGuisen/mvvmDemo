@@ -6,8 +6,9 @@ import java.util.List;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import tgs.com.mvvm.bean.BaseBean;
 import tgs.com.mvvm.bean.BannerInfo;
+import tgs.com.mvvm.bean.BaseBean;
+import tgs.com.mvvm.bean.RecommendInfo;
 import tgs.com.mvvm.bean.VideoDetailsInfo;
 
 /**
@@ -25,7 +26,7 @@ public interface RetrofitService {
      * 首页推荐数据
      */
     @GET("x/show/old?platform=android&device=&build=412001")
-    Observable<String> getRecommendedInfo();
+    Observable<RecommendInfo> getRecommendedInfo();
     
     /**
      * 视频详情数据
