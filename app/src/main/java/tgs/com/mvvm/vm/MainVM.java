@@ -5,8 +5,8 @@ import android.support.design.widget.NavigationView;
 import android.view.MenuItem;
 import android.view.View;
 
+import tgs.com.mvvm.core.Reply;
 import tgs.com.mvvm.view.Iview.BaseInterface;
-import tgs.com.mvvm.core.ReplyCommand;
 import tgs.com.mvvm.view.Iview.IMain;
 
 /**
@@ -19,7 +19,7 @@ public class MainVM extends BaseVM<IMain> implements NavigationView.OnNavigation
         super(baseInterface);
     }
     
-    public ReplyCommand<View> drawerSwitchClick = new ReplyCommand<View>(v -> {
+    public Reply<View> drawerSwitchClick = new Reply<>(v -> {
         i.drawerSwitch(true);
     });
     

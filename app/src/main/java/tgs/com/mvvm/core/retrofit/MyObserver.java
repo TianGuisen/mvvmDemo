@@ -1,4 +1,4 @@
-package tgs.com.mvvm.core;
+package tgs.com.mvvm.core.retrofit;
 
 import android.app.Activity;
 import android.content.Context;
@@ -32,7 +32,7 @@ public abstract class MyObserver<T> implements Observer<T> {
     @Override
     public void onSubscribe(Disposable d) {
         if (!NetUtil.isConnected()) {
-            if (null != context) ToastUtil.showToast(context, "网络异常");
+            if (null != context) ToastUtil.showToast("网络异常");
             return;
         } else if (loading != null) {
             loading.start();
@@ -51,11 +51,11 @@ public abstract class MyObserver<T> implements Observer<T> {
     public void onError(Throwable e) {
         if (null != context) {
             if (!NetUtil.isConnected()) {
-                ToastUtil.showToast(context, "网络异常");
+                ToastUtil.showToast("网络异常");
             } else if (e instanceof SocketTimeoutException || e instanceof ConnectException) {
-                ToastUtil.showToast(context, "请求超时,请稍后再试");
+                ToastUtil.showToast("请求超时,请稍后再试");
             } else if (e instanceof HttpException) {
-                ToastUtil.showToast(context, "服务器异常,请稍后再试");
+                ToastUtil.showToast("服务器异常,请稍后再试");
             } else {
 //                LogUtils.d(e);
             }

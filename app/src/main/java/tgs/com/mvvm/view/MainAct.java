@@ -55,6 +55,8 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
         setSupportActionBar(getBind().toolbar);
         //去toolBar标题
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        vpMain.setOffscreenPageLimit(4);
+        vpMain.setCurrentItem(2);
     }
     
     @Override

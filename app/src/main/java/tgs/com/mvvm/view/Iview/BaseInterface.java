@@ -19,7 +19,8 @@ public interface BaseInterface {
     void openActivityForResult(Class<?> pClass, Bundle pBundle, int requestCode);
     
     RotateLoading getLoading();
-    
+    void startLoading();
+    void stopLoading();
     BaseActivity getBaseActivity();
     
     void finish();

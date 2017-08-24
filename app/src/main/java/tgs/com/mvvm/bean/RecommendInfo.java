@@ -5,13 +5,15 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.List;
 
+import lombok.ToString;
+
 /**
  * Created by hcc on 16/8/20 12:38
  * 100332338@qq.com
  * <p/>
  * 首页推荐界面数据
  */
-
+@ToString
 public class RecommendInfo {
     
     private int code;
@@ -32,7 +34,7 @@ public class RecommendInfo {
     public void setResult(List<ResultBean> result) {
         this.result = result;
     }
-    
+    @ToString
     public static class ResultBean {
         /**
          * type : recommend
@@ -67,7 +69,7 @@ public class RecommendInfo {
         public void setBody(List<ResultBean.BodyBean> body) {
             this.body = body;
         }
-        
+        @ToString
         public static class HeadBean {
             /**
              * param :
@@ -82,7 +84,16 @@ public class RecommendInfo {
             private String style;
             private String title;
             private int count;
-            
+            private int img;
+    
+            public int getImg() {
+                return img;
+            }
+    
+            public void setImg(int img) {
+                this.img = img;
+            }
+    
             public int getCount() {
                 return count;
             }
@@ -123,7 +134,7 @@ public class RecommendInfo {
                 this.title = title;
             }
         }
-        
+        @ToString
         public static class BodyBean {
             /**
              * title : 【碧蓝航线MMD】 为什么到现在才开始爱上你 . . .『 Angelite 』

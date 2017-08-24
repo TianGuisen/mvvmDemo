@@ -1,4 +1,4 @@
-package tgs.com.mvvm.core;
+package tgs.com.mvvm.core.retrofit;
 
 import android.support.annotation.NonNull;
 
@@ -12,7 +12,7 @@ import tgs.com.mvvm.bean.BaseBean;
  * Created by 田桂森 on 2017/3/25.
  */
 
-public class RxHelper2 {
+public class RxHelper {
     /**
      * 订阅在io,观察在main,getJson()
      */

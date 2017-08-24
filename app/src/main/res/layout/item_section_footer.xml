@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <RelativeLayout android:id="@+id/rl_footer"
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="3px">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="3px">
 
         <TextView
             android:layout_width="wrap_content"
@@ -21,7 +21,6 @@
             android:textSize="36px"/>
 
         <ImageView
-            android:id="@+id/iv_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -30,13 +29,11 @@
             android:tint="@color/colorPrimary"/>
 
         <TextView
-            android:id="@+id/tv_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/iv_refresh"
-            android:paddingEnd="24px"
-            android:paddingStart="24px"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="50px"
             android:text="3条新动态，点击刷新"
             android:textColor="@color/font_normal"
             android:textSize="36px"/>

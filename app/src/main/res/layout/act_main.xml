@@ -24,7 +24,6 @@
             android:fitsSystemWindows="true">
 
             <tgs.com.mvvm.core.autolayout.AutoAppBarLayout
-                android:id="@+id/app_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
@@ -86,12 +85,12 @@
             </android.support.v4.view.ViewPager>
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/flb_switch_mode"
                 android:layout_width="100px"
                 android:layout_height="100px"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="20px"
-                android:elevation="10dp"/>
+                android:elevation="10dp"
+                tools:targetApi="lollipop"/>
             <tgs.com.mvvm.weight.RotateLoading
                 android:id="@+id/loading"
                 android:layout_width="match_parent"

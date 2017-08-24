@@ -24,6 +24,7 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFra
     
     private D bind;
     private BaseVM vm;
+    private RotateLoading loading;
     
     @Nullable
     @Override
@@ -92,7 +93,7 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFra
     
     @Override
     public void toastMessage(String message) {
-        ToastUtil.showToast(getActivity(), message);
+        ToastUtil.showToast(message);
     }
     
     @Override
@@ -102,8 +103,21 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFra
     
     @Override
     public RotateLoading getLoading() {
-        BaseActivity activity = (BaseActivity) ActivityManager.getInstance().currentActivity();
-        return activity.getLoading();
+        if (loading == null) {
+            BaseActivity activity = (BaseActivity) ActivityManager.getInstance().currentActivity();
+            loading = activity.getLoading();
+        }
+        return loading;
+    }
+    
+    @Override
+    public void startLoading() {
+        getLoading().start();
+    }
+    
+    @Override
+    public void stopLoading() {
+        getLoading().stop();
     }
     
     @Override

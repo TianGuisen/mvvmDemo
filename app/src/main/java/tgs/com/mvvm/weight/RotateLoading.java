@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 import tgs.com.mvvm.MyApplication;
+import tgs.com.mvvm.R;
+import tgs.com.mvvm.utils.UIUtil;
 
 
 /**
@@ -37,7 +39,7 @@ public class RotateLoading extends View {
     /**
      * 圆的颜色
      */
-    private int color = Color.parseColor("#f58437");
+    private int color = UIUtil.getColor(R.color.colorPrimary);
     
     private static final int DEFAULT_SPEED_OF_DEGREE = 10;
     

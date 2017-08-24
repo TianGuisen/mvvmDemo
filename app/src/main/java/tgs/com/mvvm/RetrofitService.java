@@ -16,6 +16,7 @@ import tgs.com.mvvm.bean.VideoDetailsInfo;
  */
 
 public interface RetrofitService {
+    //rxjava2新加了一个支持背压的Flowable,但是一般情况并用不到这个功能
     /**
      * 首页推荐banner
      */

@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import tgs.com.mvvm.view.DynamicFg;
-import tgs.com.mvvm.view.LiveFg;
+import tgs.com.mvvm.view.RecommendFg;
 import tgs.com.mvvm.view.Test2Fg;
 import tgs.com.mvvm.view.TestFg;
 import tgs.com.mvvm.view.ZoneFg;
@@ -15,7 +15,7 @@ import tgs.com.mvvm.view.ZoneFg;
  */
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
-    private String[] titles = {"Re测试", "多Tpye的Re测试", "直播", "分区", "动态"};
+    private String[] titles = {"Re测试", "多Tpye的Re测试", "推荐", "直播", "动态"};
     
     public MainPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -29,7 +29,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return Test2Fg.newInstance();
             case 2:
-                return LiveFg.newInstance();
+                return RecommendFg.newInstance();
             case 3:
                 return ZoneFg.newInstance();
             case 4:

@@ -1,4 +1,4 @@
-package tgs.com.mvvm.utils;
+package tgs.com.mvvm.core;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -28,7 +28,7 @@ public class BannerLoader extends ImageLoader {
                 .diskCacheStrategy(DiskCacheStrategy.NONE);
         Glide.with(context.getApplicationContext())
                 .load(path)
-                .apply(options)
+//                .apply(options)
                 .transition(new DrawableTransitionOptions().crossFade(500))
                 .into(imageView);
     }

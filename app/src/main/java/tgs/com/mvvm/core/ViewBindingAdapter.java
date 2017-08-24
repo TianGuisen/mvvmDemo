@@ -33,7 +33,7 @@ public final class ViewBindingAdapter {
      * 点击监听
      */
     @BindingAdapter({"click"})
-    public static void clickCommand(View view, final ReplyCommand<View> clickCommand) {
+    public static void clickCommand(View view, final Reply<View> clickCommand) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +73,7 @@ public final class ViewBindingAdapter {
      * 焦点改变监听
      */
     @BindingAdapter({"focusChange"})
-    public static void onFocusChangeCommand(View view, final ReplyCommand<Boolean> onFocusChangeCommand) {
+    public static void onFocusChangeCommand(View view, final Reply<Boolean> onFocusChangeCommand) {
         view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -88,7 +88,7 @@ public final class ViewBindingAdapter {
      * onTouch监听
      */
     @BindingAdapter({"touch"})
-    public static void onTouchCommand(View view, final ResponseCommand<MotionEvent, Boolean> onTouchCommand) {
+    public static void onTouchCommand(View view, final Response<MotionEvent, Boolean> onTouchCommand) {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -104,7 +104,7 @@ public final class ViewBindingAdapter {
      * 刷新控件,可以换成任意其他的
      */
     @BindingAdapter({"load"})
-    public static void onLoadCommand(SmartRefreshLayout smartRefreshLayout, final ReplyCommand onRefreshCommand) {
+    public static void onLoadCommand(SmartRefreshLayout smartRefreshLayout, final Reply onRefreshCommand) {
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
@@ -161,9 +161,9 @@ public final class ViewBindingAdapter {
      */
     @BindingAdapter(value = {"beforeTextChanged", "textChanged", "afterTextChanged"}, requireAll = false)
     public static void editTextCommand(EditText editText,
-                                       final ReplyCommand<TextChangeDataWrapper> beforeTextChangedCommand,
-                                       final ReplyCommand<TextChangeDataWrapper> onTextChangedCommand,
-                                       final ReplyCommand<String> afterTextChangedCommand) {
+                                       final Reply<TextChangeDataWrapper> beforeTextChangedCommand,
+                                       final Reply<TextChangeDataWrapper> onTextChangedCommand,
+                                       final Reply<String> afterTextChangedCommand) {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -206,7 +206,7 @@ public final class ViewBindingAdapter {
      * scrollView
      */
     @BindingAdapter({"scrollChange"})
-    public static void onScrollChangeCommand(final NestedScrollView nestedScrollView, final ReplyCommand<NestScrollDataWrapper> onScrollChangeCommand) {
+    public static void onScrollChangeCommand(final NestedScrollView nestedScrollView, final Reply<NestScrollDataWrapper> onScrollChangeCommand) {
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
@@ -236,9 +236,9 @@ public final class ViewBindingAdapter {
      */
     @BindingAdapter(value = {"pageScrolled", "pageSelected", "pageScrollStateChanged"}, requireAll = false)
     public static void onScrollChangeCommand(final ViewPager viewPager,
-                                             final ReplyCommand<ViewPagerDataWrapper> onPageScrolledCommand,
-                                             final ReplyCommand<Integer> onPageSelectedCommand,
-                                             final ReplyCommand<Integer> onPageScrollStateChangedCommand) {
+                                             final Reply<ViewPagerDataWrapper> onPageScrolledCommand,
+                                             final Reply<Integer> onPageSelectedCommand,
+                                             final Reply<Integer> onPageScrollStateChangedCommand) {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             private int state;
             
@@ -283,7 +283,7 @@ public final class ViewBindingAdapter {
     
     @BindingAdapter("checkedChange")
     public static void onRadioGroupCheckedChangeCommand(RadioGroup radioGroup,
-                                                        final ReplyCommand<Integer> onCheckedCommand) {
+                                                        final Reply<Integer> onCheckedCommand) {
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> onCheckedCommand.execute(checkedId));
     }
     

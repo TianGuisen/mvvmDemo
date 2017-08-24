@@ -1,42 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="item"
+            type="tgs.com.mvvm.bean.RecommendInfo.ResultBean.BodyBean"/>
+    </data>
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:fresco="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardPreventCornerOverlap="false">
+        >
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/iv_card_pic"
+            <ImageView
+                android:scaleType="fitXY"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                fresco:viewAspectRatio="3.38"/>
+                android:layout_height="300px"
+                bind:imageUrl="@{item.cover}"
+                />
 
             <TextView
-                android:id="@+id/tv_card_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@id/iv_card_pic"
                 android:layout_margin="12px"
                 android:ellipsize="end"
                 android:maxLines="2"
+                android:text="@{item.title}"
                 android:textColor="@color/font_normal"
                 android:textSize="36px"/>
-        </RelativeLayout>
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 </layout>

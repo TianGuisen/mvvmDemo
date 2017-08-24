@@ -24,6 +24,7 @@ import tgs.com.mvvm.weight.RotateLoading;
 public abstract class BaseActivity<D extends ViewDataBinding> extends SupportActivity implements BaseInterface {
     private D bind;
     private BaseVM vm;
+    private RotateLoading loading;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public abstract class BaseActivity<D extends ViewDataBinding> extends SupportAct
         init();
         vm.init();
     }
+    
     //autolayout适配用
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
@@ -112,7 +114,7 @@ public abstract class BaseActivity<D extends ViewDataBinding> extends SupportAct
     
     @Override
     public void toastMessage(String message) {
-        ToastUtil.showToast(this, message);
+        ToastUtil.showToast(message);
     }
     
     @Override
@@ -122,6 +124,19 @@ public abstract class BaseActivity<D extends ViewDataBinding> extends SupportAct
     
     @Override
     public RotateLoading getLoading() {
-        return (RotateLoading) findViewById(R.id.loading);
+        if (loading == null) {
+            loading = (RotateLoading) findViewById(R.id.loading);
+        }
+        return loading;
+    }
+    
+    @Override
+    public void startLoading() {
+        getLoading().start();
+    }
+    
+    @Override
+    public void stopLoading() {
+        getLoading().stop();
     }
 }

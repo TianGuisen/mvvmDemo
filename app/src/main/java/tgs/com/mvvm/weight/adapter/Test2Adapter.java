@@ -22,13 +22,13 @@ public class Test2Adapter extends SimpleMultiAdapter {
         switch (integer) {
             case 0:
                 ItemType0Binding binding0 = (ItemType0Binding) holder.binding;
-                binding0.tvName.setOnClickListener(v -> childClick.execute(bean, binding0.tvName, position));
-                binding0.tvAge.setOnClickListener(v -> childClick.execute(bean, binding0.tvAge, position));
+                binding0.tvName.setOnClickListener(v -> childClickLisener.childClick(bean,binding0.tvName,position));
+                binding0.tvAge.setOnClickListener(v -> childClickLisener.childClick(bean,binding0.tvAge,position));
                 break;
             case 1:
                 ItemType1Binding binding1 = (ItemType1Binding) holder.binding;
-                binding1.tvName.setOnClickListener(v -> childClick.execute(bean, binding1.tvName, position));
-                binding1.tvAge.setOnClickListener(v -> childClick.execute(bean, binding1.tvAge, position));
+                binding1.tvName.setOnClickListener(v ->childClickLisener.childClick(bean,binding1.tvName,position));
+                binding1.tvAge.setOnClickListener(v ->childClickLisener.childClick(bean,binding1.tvAge,position));
                 break;
         }
     }

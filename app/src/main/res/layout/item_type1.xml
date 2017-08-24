@@ -19,6 +19,7 @@
             android:layout_width="200px"
             android:layout_height="200px"
             android:background="#00f"
+            android:gravity="center"
             android:text="@{item.name}"/>
 
         <TextView
@@ -26,6 +27,7 @@
             android:layout_width="200px"
             android:layout_height="200px"
             android:background="#0ff"
+            android:gravity="center"
             android:text='@{""+item.age}'/>
     </LinearLayout>
 </layout>

@@ -4,49 +4,66 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.apkfuns.logutils.LogUtils;
 import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.List;
 
 import tgs.com.mvvm.BR;
-import tgs.com.mvvm.core.ReplyCommand;
 
 /**
  * Created by 田桂森 on 2017/8/17.
  */
 
-abstract class BaseAdapter<E, VB extends ViewDataBinding> extends RecyclerView.Adapter<BaseAdapter.BindViewHolder> {
+public abstract class BaseAdapter<E, VB extends ViewDataBinding> extends RecyclerView.Adapter<BaseAdapter.BindViewHolder> {
     List<E> mDatas;
     
     BaseAdapter(List<E> datas) {
         mDatas = datas;
     }
     
-    private ReplyCommand<E> itemClick;
-    ReplyCommand<E> childClick;
+    public onItemClickLisener<E> itemClickLisener;
+    public onChildClickLisener<E> childClickLisener;
+    public onItemLongClickLisener<E> itemLongClickLisener;
     
-    protected BaseAdapter() {
+    
+    public void setChildClickLisener(onChildClickLisener<E> childClickLisener) {
+        this.childClickLisener = childClickLisener;
     }
     
-    public void setItemClickCommand(ReplyCommand<E> itemClick) {
-        this.itemClick = itemClick;
+    public void setItemClickLisener(onItemClickLisener<E> itemClickLisener) {
+        this.itemClickLisener = itemClickLisener;
     }
     
-    public void setChildClickCommand(ReplyCommand<E> childClick) {
-        this.childClick = childClick;
+    public void setItemLongClickLisener(onItemLongClickLisener<E> itemLongClickLisener) {
+        this.itemLongClickLisener = itemLongClickLisener;
+    }
+    
+    public interface onItemClickLisener<E> {
+        void itemClick(E bean, View view, int position);
+    }
+    
+    public interface onChildClickLisener<E> {
+        void childClick(E bean, View view, int position);
+    }
+    
+    interface onItemLongClickLisener<E> {
+        void itemLongClick(E bean, View view, int position);
+    }
+    
+    BaseAdapter() {
     }
     
     @Override
     public void onBindViewHolder(BaseAdapter.BindViewHolder holder, int position) {
         E bean = mDatas.get(position);
         View itemView = holder.binding.getRoot();
-        if (itemClick != null) {
+        if (itemClickLisener != null) {
             itemView.setOnClickListener(v -> {
-                itemClick.execute(bean, holder.binding.getRoot(), position);
+                //noinspection unchecked
+                itemClickLisener.itemClick(bean, holder.binding.getRoot(), position);
             });
         }
-        decorator(bean,holder, position);
+        decorator(bean, holder, position);
         holder.binding.setVariable(BR.item, mDatas.get(position));
         holder.binding.executePendingBindings();
     }

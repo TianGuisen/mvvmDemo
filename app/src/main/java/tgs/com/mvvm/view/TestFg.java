@@ -5,9 +5,9 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.databinding.FgTestBinding;
 import tgs.com.mvvm.view.Iview.ITest;
+import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.vm.TestVM;
 import tgs.com.mvvm.weight.adapter.TestAdapter;
 
@@ -49,8 +49,8 @@ public class TestFg extends BaseFragment<FgTestBinding> implements ITest {
         getBind().rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         testAdapter = new TestAdapter(vm.list, R.layout.item_test);
         getBind().rv.setAdapter(testAdapter);
-        testAdapter.setItemClickCommand(vm.itemClick);
-        testAdapter.setChildClickCommand(vm.childClick);
+        testAdapter.setItemClickLisener(vm);
+        testAdapter.setChildClickLisener(vm);
     }
     
     @Override

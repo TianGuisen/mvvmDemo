@@ -20,11 +20,11 @@ public abstract class MultiBaseAdapter extends BaseAdapter<Object, ViewDataBindi
     /**
      * key:viewType,value:xml
      */
-    protected ArrayMap<Integer, Integer> mItemTypeLayoutMap = new ArrayMap<>();
+     ArrayMap<Integer, Integer> mItemTypeLayoutMap = new ArrayMap<>();
     /**
      * 每个position对应一个viewType
      */
-    protected ArrayList<Integer> mResLayout;
+     ArrayList<Integer> mResLayout;
     
     MultiBaseAdapter(Map<Integer, Integer> itemTypeLayoutMap) {
         mDatas = new ArrayList<>();

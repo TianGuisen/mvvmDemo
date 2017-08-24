@@ -10,16 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.view.Iview.BaseInterface;
 import tgs.com.mvvm.bean.ItemInfo;
-import tgs.com.mvvm.core.ReplyCommand;
+import tgs.com.mvvm.core.Reply;
+import tgs.com.mvvm.view.Iview.BaseInterface;
 import tgs.com.mvvm.view.Iview.ITest;
+import tgs.com.mvvm.weight.adapter.BaseAdapter;
 
 /**
  * Created by 田桂森 on 2017/7/31.
  */
 
-public class TestVM extends BaseVM<ITest> {
+public class TestVM extends BaseVM<ITest> implements BaseAdapter.onItemClickLisener<ItemInfo>,BaseAdapter.onChildClickLisener<ItemInfo> {
     public List<ItemInfo> list = new ArrayList<>();
     
     
@@ -50,27 +51,15 @@ public class TestVM extends BaseVM<ITest> {
         });
     }
     
-    public ReplyCommand<ItemInfo> itemClick = new ReplyCommand<>((itemInfo, view, position) -> {
-        i.toastMessage("点击的是item:" + itemInfo.toString() + "  位置:" + position);
-    });
-    
-    public ReplyCommand<ItemInfo> childClick = new ReplyCommand<>((itemInfo, view, position) -> {
-        if (view.getId() == R.id.tv_name) {
-            i.toastMessage("点击的是name:" + itemInfo.toString() + "  位置:" + position);
-        } else if (view.getId() == R.id.tv_age) {
-            i.toastMessage("点击的是age:" + itemInfo.toString() + "  位置:" + position);
-        }
-    });
-    
-    public final ReplyCommand<View> imgClick = new ReplyCommand<>(v -> {
+    public final Reply<View> imgClick = new Reply<>(v -> {
         localImg.set(R.drawable.test_img1);
     });
     
-    public final ReplyCommand<View> focusClick = new ReplyCommand<>(v -> {
+    public final Reply<View> focusClick = new Reply<>(v -> {
         focus.set(true);
     });
     
-    public ReplyCommand loadData = new ReplyCommand<Integer>(i -> {
+    public Reply loadData = new Reply<Integer>(i -> {
         if (i == 0) {
             //刷新
             list.clear();
@@ -87,4 +76,17 @@ public class TestVM extends BaseVM<ITest> {
         }
     });
     
+    @Override
+    public void itemClick(ItemInfo bean, View view, int position) {
+        i.toastMessage("点击的是item:" + bean.toString() + "  位置:" + position);
+    }
+    
+    @Override
+    public void childClick(ItemInfo bean, View view, int position) {
+        if (view.getId() == R.id.tv_name) {
+            i.toastMessage("点击的是name:" + bean.toString() + "  位置:" + position);
+        } else if (view.getId() == R.id.tv_age) {
+            i.toastMessage("点击的是age:" + bean.toString() + "  位置:" + position);
+        }
+    }
 }

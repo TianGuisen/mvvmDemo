@@ -19,7 +19,7 @@ public class TestAdapter extends SigleBaseAdapter<ItemInfo, ItemTestBinding> {
     @Override
     public void decorator(ItemInfo bean, BaseAdapter.BindViewHolder holder, int position) {
         ItemTestBinding binding = (ItemTestBinding) holder.binding;
-        binding.tvName.setOnClickListener(v -> childClick.execute(bean, binding.tvName, position));
-        binding.tvAge.setOnClickListener(v -> childClick.execute(bean, binding.tvAge, position));
+        binding.tvName.setOnClickListener(v -> childClickLisener.childClick(bean,binding.tvName,position));
+        binding.tvAge.setOnClickListener(v -> childClickLisener.childClick(bean,binding.tvAge,position));
     }
 }

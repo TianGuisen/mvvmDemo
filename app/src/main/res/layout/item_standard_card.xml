@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:bind="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:fresco="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,88 +13,75 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:fresco="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardPreventCornerOverlap="false">
+        >
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/iv_card_pic"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="320px"
+                android:scaleType="fitXY"
                 bind:imageUrl="@{item.cover}"
-                fresco:viewAspectRatio="1.59"/>
+                />
 
             <TextView
-                android:id="@+id/tv_card_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@id/iv_card_pic"
-                android:layout_alignParentStart="true"
-                android:layout_below="@id/iv_card_pic"
                 android:layout_margin="12px"
                 android:ellipsize="end"
                 android:lines="2"
-                android:text="@{item.title}"
                 android:maxLines="2"
+                android:text="@{item.title}"
                 android:textColor="@color/font_normal"
                 android:textSize="36px"/>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@id/iv_card_pic"
-                android:layout_alignStart="@id/iv_card_pic"
-                android:layout_below="@id/tv_card_desc"
-                android:layout_marginEnd="12px"
-                android:layout_marginStart="12px"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                >
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="12px"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20px"
                     android:src="@drawable/ic_info_views"
                     android:tint="@color/colorTextGray"/>
 
                 <TextView
-                    android:id="@+id/tv_play_counts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginStart="60px"
+                    android:layout_centerVertical="true"
                     android:text="@{item.play}"
-                    android:gravity="center_vertical"
                     android:textColor="@color/colorTextGray"
                     android:textSize="36px"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="12px"
+                    android:layout_marginStart="220px"
+                    android:layout_centerVertical="true"
                     android:src="@drawable/ic_info_danmakus"
                     android:tint="@color/colorTextGray"/>
 
                 <TextView
-                    android:id="@+id/tv_comment_counts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="260px"
                     android:text="@{item.danmaku}"
-                    android:gravity="center_vertical"
                     android:textColor="@color/colorTextGray"
                     android:textSize="36px"/>
-            </LinearLayout>
-
-        </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </layout>
