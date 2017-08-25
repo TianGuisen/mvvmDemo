@@ -1,7 +1,6 @@
 package tgs.com.mvvm.core.retrofit;
 
-import android.app.Activity;
-import android.content.Context;
+import com.apkfuns.logutils.LogUtils;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
@@ -17,24 +16,25 @@ import tgs.com.mvvm.weight.RotateLoading;
  * Created by 田桂森 on 2017/8/15.
  */
 public abstract class MyObserver<T> implements Observer<T> {
-    private Context context;
+    private boolean showToast;
     private RotateLoading loading;
     
     /**
-     * @param context 为null不显示toast
-     * @param loading 为null不显示loading
+     * @param showToast true显示toast
+     * @param loading   为null不显示loading
      */
-    public MyObserver(Activity context, RotateLoading loading) {
-        this.context = context;
+    public MyObserver(boolean showToast, RotateLoading loading) {
+        this.showToast = showToast;
         this.loading = loading;
     }
     
     @Override
     public void onSubscribe(Disposable d) {
         if (!NetUtil.isConnected()) {
-            if (null != context) ToastUtil.showToast("网络异常");
+            if (showToast) ToastUtil.showToast("网络异常");
             return;
-        } else if (loading != null) {
+        }
+        if (loading != null) {
             loading.start();
         }
     }
@@ -49,7 +49,7 @@ public abstract class MyObserver<T> implements Observer<T> {
     
     @Override
     public void onError(Throwable e) {
-        if (null != context) {
+        if (showToast) {
             if (!NetUtil.isConnected()) {
                 ToastUtil.showToast("网络异常");
             } else if (e instanceof SocketTimeoutException || e instanceof ConnectException) {
@@ -57,7 +57,7 @@ public abstract class MyObserver<T> implements Observer<T> {
             } else if (e instanceof HttpException) {
                 ToastUtil.showToast("服务器异常,请稍后再试");
             } else {
-//                LogUtils.d(e);
+                LogUtils.d(e);
             }
         }
         if (loading != null) {

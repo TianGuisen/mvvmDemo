@@ -99,6 +99,23 @@ public class RecommendVM extends BaseVM<IRecommend> implements RecommendAdapter.
                     LogUtils.d("com");
                     i.refreshComplete(true, true);
                 });
+    
+    
+//        一般的网络请求示例
+//        RetrofitUtil.getJson().getBannerInfo()
+//                .compose(RxHelper.ioMain())
+//                .subscribe(new MyObserver<List<BannerInfo>>(true, null) {
+//                    @Override
+//                    protected void next(List<BannerInfo> bannerInfos) {
+//                        listBanner.clear();
+//                        listBannerImgUrl.clear();
+//                        listBanner.addAll(bannerInfos);
+//                        for (BannerInfo bannerInfo : bannerInfos) {
+//                            listBannerImgUrl.add(bannerInfo.getImage());
+//                        }
+//                        i.initAdapter();
+//                    }
+//                });
     }
     
     @Override
