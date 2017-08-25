@@ -1,62 +1,38 @@
 package tgs.com.mvvm.view;
 
+import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
+import android.view.MenuItem;
 
-import tgs.com.mvvm.BR;
+import me.yokeyword.fragmentation.SupportFragment;
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.vm.BaseVM;
-import tgs.com.mvvm.core.autolayout.AutoTabLayout;
 import tgs.com.mvvm.databinding.ActMainBinding;
-import tgs.com.mvvm.view.Iview.IMain;
-import tgs.com.mvvm.vm.MainVM;
-import tgs.com.mvvm.weight.adapter.MainPagerAdapter;
+import tgs.com.mvvm.utils.ToastUtil;
 
 
-public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
-    
-    private MainVM mainVM;
+public class MainAct extends MySupportActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    private ActMainBinding binding;
     
     @Override
-    protected int setBR() {
-        return BR.vm;
-    }
-    
-    @Override
-    protected BaseVM setVM() {
-        mainVM = new MainVM(this);
-        return mainVM;
-    }
-    
-    @Override
-    protected int setLayout() {
-        return R.layout.act_main;
-    }
-    
-    @Override
-    public void init() {
-        AutoTabLayout tablayout = getBind().tablayout;
-        ViewPager vpMain = getBind().vpMain;
-        drawer = getBind().drawerLayout;
-        for (int i = 0; i < 5; i++) {
-            tablayout.addTab(tablayout.newTab());
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.act_main);
+        SupportFragment fragment = findFragment(MainFg.class);
+        if (fragment == null) {
+            loadRootFragment(R.id.fl_container, MainFg.newInstance());
         }
-        vpMain.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
-        tablayout.setupWithViewPager(vpMain);
-        
+        drawer = binding.drawerLayout;
         //左侧菜单去除滚动条
-        getBind().navView.getChildAt(0).setVerticalScrollBarEnabled(false);
+        binding.navView.getChildAt(0).setVerticalScrollBarEnabled(false);
         //左侧菜单点击事件
-        getBind().navView.setNavigationItemSelectedListener(mainVM);
-        //onCreateOptionsMenu执行需要这句话
-        setSupportActionBar(getBind().toolbar);
-        //去toolBar标题
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        vpMain.setOffscreenPageLimit(4);
-        vpMain.setCurrentItem(2);
+        binding.navView.setNavigationItemSelectedListener(this);
     }
     
     @Override
@@ -76,12 +52,18 @@ public class MainAct extends BaseActivity<ActMainBinding> implements IMain {
         }
     }
     
-    @Override
     public void drawerSwitch(boolean show) {
         if (show) {
             drawer.openDrawer(GravityCompat.START);
         } else {
             drawer.closeDrawer(GravityCompat.START);
         }
+    }
+    
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        ToastUtil.showToast(item.getTitle().toString());
+        drawerSwitch(false);
+        return true;
     }
 }

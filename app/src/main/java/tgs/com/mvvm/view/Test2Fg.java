@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.bean.ItemInfo;
 import tgs.com.mvvm.databinding.FgTest2Binding;
 import tgs.com.mvvm.view.Iview.ITest2;
+import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.vm.Test2VM;
 import tgs.com.mvvm.weight.adapter.Test2Adapter;
 
@@ -30,10 +29,6 @@ public class Test2Fg extends BaseFragment<FgTest2Binding> implements ITest2 {
         Test2Fg fragment = new Test2Fg();
         fragment.setArguments(args);
         return fragment;
-    }
-    @Override
-    protected int setBR() {
-        return BR.vm;
     }
     
     @Override

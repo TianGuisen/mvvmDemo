@@ -1,6 +1,5 @@
 package tgs.com.mvvm.view;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -10,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.yokeyword.fragmentation.SupportFragment;
-import tgs.com.mvvm.ActivityManager;
+import tgs.com.mvvm.BR;
+import tgs.com.mvvm.utils.ToastUtil;
 import tgs.com.mvvm.view.Iview.BaseInterface;
 import tgs.com.mvvm.vm.BaseVM;
-import tgs.com.mvvm.utils.ToastUtil;
 import tgs.com.mvvm.weight.RotateLoading;
 
 
@@ -30,7 +29,7 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFra
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         bind = DataBindingUtil.inflate(inflater, setLayout(), container, false);
-        bind.setVariable(setBR(), vm = setVM());
+        bind.setVariable(BR.vm, vm = setVM());
         init();
         vm.init();
         setUserVisibleHint(true);
@@ -44,8 +43,6 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFra
     }
     
     protected abstract BaseVM setVM();
-    
-    protected abstract int setBR();
     
     protected D getBind() {
         return bind;
@@ -63,51 +60,25 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFra
         vm.onDestroy();
     }
     
-    @Override
-    public void openActivity(Class<?> pClass) {
-        openActivity(pClass, null);
+    public MainAct getMainAct() {
+        return (MainAct) _mActivity;
     }
     
-    @Override
-    public void openActivity(Class<?> pClass, Bundle pBundle) {
-        Intent intent = new Intent(getActivity(), pClass);
-        if (pBundle != null) {
-            intent.putExtras(pBundle);
-        }
-        startActivity(intent);
-    }
-    
-    @Override
-    public void openActivityForResult(Class<?> pClass, int requestCode) {
-        openActivityForResult(pClass, null, requestCode);
-    }
-    
-    @Override
-    public void openActivityForResult(Class<?> pClass, Bundle pBundle, int requestCode) {
-        Intent intent = new Intent(getActivity(), pClass);
-        if (pBundle != null) {
-            intent.putExtras(pBundle);
-        }
-        startActivityForResult(intent, requestCode);
-    }
-    
-    @Override
-    public void toastMessage(String message) {
-        ToastUtil.showToast(message);
-    }
-    
-    @Override
-    public BaseActivity getBaseActivity() {
-        return (BaseActivity) getActivity();
+    public MainFg getMainFg() {
+        return findFragment(MainFg.class);
     }
     
     @Override
     public RotateLoading getLoading() {
         if (loading == null) {
-            BaseActivity activity = (BaseActivity) ActivityManager.getInstance().currentActivity();
-            loading = activity.getLoading();
+            loading = getMainFg().getLoading();
         }
         return loading;
+    }
+    
+    @Override
+    public void toastMessage(String message) {
+        ToastUtil.showToast(message);
     }
     
     @Override

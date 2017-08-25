@@ -6,7 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 
 import java.util.Map;
 
-import tgs.com.mvvm.BR;
+import me.yokeyword.fragmentation.SupportFragment;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.databinding.FgRecommendBinding;
 import tgs.com.mvvm.utils.UIUtil;
@@ -36,11 +36,6 @@ public class RecommendFg extends BaseFragment<FgRecommendBinding> implements IRe
         RecommendFg fragment = new RecommendFg();
         fragment.setArguments(args);
         return fragment;
-    }
-    
-    @Override
-    protected int setBR() {
-        return BR.vm;
     }
     
     @Override
@@ -103,6 +98,7 @@ public class RecommendFg extends BaseFragment<FgRecommendBinding> implements IRe
         getBind().rv.addItemDecoration(new SpacesItemDecoration(UIUtil.dp2px(10), spanSizeLookup));
         
         getBind().rv.setAdapter(recommendAdapter);
+        
     }
     
     @Override
@@ -116,6 +112,11 @@ public class RecommendFg extends BaseFragment<FgRecommendBinding> implements IRe
     }
     
     @Override
+    public void startVideoDetailsFg(String param, String cover) {
+        ((SupportFragment) getParentFragment()).start(VideoDetailsFg.newInstance(param,cover));
+    }
+    
+    @Override
     public void notifyAdapter() {
         if (recommendAdapter == null) {
             initAdapter();
@@ -123,4 +124,6 @@ public class RecommendFg extends BaseFragment<FgRecommendBinding> implements IRe
             recommendAdapter.notifyDataSetChanged();
         }
     }
+    
+    
 }

@@ -2,11 +2,10 @@ package tgs.com.mvvm.view;
 
 import android.os.Bundle;
 
-import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.databinding.FgDynamicBinding;
 import tgs.com.mvvm.view.Iview.ITest2;
+import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.vm.DynamicVM;
 
 /**
@@ -19,10 +18,6 @@ public class DynamicFg extends BaseFragment<FgDynamicBinding> implements ITest2 
         DynamicFg fragment = new DynamicFg();
         fragment.setArguments(args);
         return fragment;
-    }
-    @Override
-    protected int setBR() {
-        return BR.vm;
     }
     
     @Override

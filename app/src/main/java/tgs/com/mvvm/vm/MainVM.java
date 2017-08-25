@@ -22,6 +22,9 @@ public class MainVM extends BaseVM<IMain> implements NavigationView.OnNavigation
     public Reply<View> drawerSwitchClick = new Reply<>(v -> {
         i.drawerSwitch(true);
     });
+    public Reply<View> actionClick = new Reply<>(v -> {
+        i.toastMessage("action");
+    });
     
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

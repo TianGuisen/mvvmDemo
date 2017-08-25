@@ -1,101 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:bind="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:fresco="http://schemas.android.com/apk/res-auto">
-
-    <data>
-
-        <variable
-            name="vm"
-            type="tgs.com.mvvm.vm.MainVM"></variable>
-    </data>
+        xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:openDrawer="start">
-
-        <android.support.design.widget.CoordinatorLayout
+        
+        <FrameLayout
+            android:id="@+id/fl_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true">
-
-            <tgs.com.mvvm.core.autolayout.AutoAppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                >
-
-                <tgs.com.mvvm.core.autolayout.AutoToolbar
-                    android:id="@+id/toolbar"
-                    style="@style/MyToolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="160px"
-                    app:layout_scrollFlags="scroll|enterAlways"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        bind:click="@{vm.drawerSwitchClick}"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_drawer_home"/>
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="105px"
-                            android:layout_height="105px"
-                            android:layout_marginLeft="45px"
-                            android:src="@drawable/bili_default_image_tv"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="45px"
-                            android:text="田桂森"
-                            android:textColor="@android:color/white"
-                            android:textSize="18sp"/>
-
-                    </LinearLayout>
-                </tgs.com.mvvm.core.autolayout.AutoToolbar>
-
-                <tgs.com.mvvm.core.autolayout.AutoTabLayout
-                    android:id="@+id/tablayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    app:tabIndicatorColor="@color/white"
-                    app:tabSelectedTextColor="@color/white"
-                    app:tabTextColor="@color/pinkFD"
-                    />
-            </tgs.com.mvvm.core.autolayout.AutoAppBarLayout>
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/vp_main"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
-            </android.support.v4.view.ViewPager>
-
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="100px"
-                android:layout_height="100px"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="20px"
-                android:elevation="10dp"
-                tools:targetApi="lollipop"/>
-            <tgs.com.mvvm.weight.RotateLoading
-                android:id="@+id/loading"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </android.support.design.widget.CoordinatorLayout>
+            tools:context=".demo_flow.MainActivity">
+        </FrameLayout>
 
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"

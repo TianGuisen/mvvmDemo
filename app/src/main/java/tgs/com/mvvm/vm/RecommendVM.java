@@ -108,6 +108,13 @@ public class RecommendVM extends BaseVM<IRecommend> implements RecommendAdapter.
     
     @Override
     public void itemClick(Object bean, View view, int position) {
+        if (view.getId() == R.id.card_standard) {
+            RecommendInfo.ResultBean.BodyBean bodyBean = (RecommendInfo.ResultBean.BodyBean) bean;
+            LogUtils.d(bodyBean);
+            i.startVideoDetailsFg(bodyBean.getParam(),bodyBean.getCover());
+            
+            
+        }
         i.toastMessage("点击的是item:" + bean.toString() + "  位置:" + position);
     }
 }

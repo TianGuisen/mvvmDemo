@@ -2,11 +2,10 @@ package tgs.com.mvvm.view;
 
 import android.os.Bundle;
 
-import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
-import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.databinding.FgZoneBinding;
 import tgs.com.mvvm.view.Iview.IZone;
+import tgs.com.mvvm.vm.BaseVM;
 import tgs.com.mvvm.vm.ZoneVM;
 
 /**
@@ -20,10 +19,6 @@ public class ZoneFg extends BaseFragment<FgZoneBinding> implements IZone {
         ZoneFg fragment = new ZoneFg();
         fragment.setArguments(args);
         return fragment;
-    }
-    @Override
-    protected int setBR() {
-        return BR.vm;
     }
     
     @Override

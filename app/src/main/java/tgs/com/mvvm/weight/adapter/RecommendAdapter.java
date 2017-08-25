@@ -95,7 +95,7 @@ public class RecommendAdapter extends SimpleMultiAdapter {
                 break;
             case TYPE_STANDARD_CARD:
                 ItemStandardCardBinding itemStandardCardBinding = (ItemStandardCardBinding) holder.binding;
-                itemStandardCardBinding.cardView.setOnClickListener(v -> {
+                itemStandardCardBinding.cardStandard.setOnClickListener(v -> {
                     itemClickLisener.itemClick(bean,itemStandardCardBinding.getRoot(),position);
                 });
                 break;

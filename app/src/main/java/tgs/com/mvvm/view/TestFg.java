@@ -3,7 +3,6 @@ package tgs.com.mvvm.view;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 
-import tgs.com.mvvm.BR;
 import tgs.com.mvvm.R;
 import tgs.com.mvvm.databinding.FgTestBinding;
 import tgs.com.mvvm.view.Iview.ITest;
@@ -25,11 +24,6 @@ public class TestFg extends BaseFragment<FgTestBinding> implements ITest {
         TestFg fragment = new TestFg();
         fragment.setArguments(args);
         return fragment;
-    }
-    
-    @Override
-    protected int setBR() {
-        return BR.vm;
     }
     
     @Override
