@@ -11,15 +11,16 @@
             type="tgs.com.mvvm.vm.MainVM"/>
     </data>
 
-    <FrameLayout
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:openDrawer="start">
 
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true">
+            >
 
             <tgs.com.mvvm.core.autolayout.AutoAppBarLayout
                 android:layout_width="match_parent"
@@ -32,6 +33,7 @@
                     style="@style/MyToolbar"
                     android:layout_width="match_parent"
                     android:layout_height="160px"
+                    android:background="@color/colorPrimary"
                     app:layout_scrollFlags="scroll|enterAlways"
                     >
 
@@ -60,7 +62,6 @@
                             android:text="田桂森"
                             android:textColor="@android:color/white"
                             android:textSize="18sp"/>
-
                     </LinearLayout>
                 </tgs.com.mvvm.core.autolayout.AutoToolbar>
 
@@ -96,5 +97,16 @@
                 bind:click="@{vm.actionClick}"
                 tools:targetApi="lollipop"/>
         </android.support.design.widget.CoordinatorLayout>
-    </FrameLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header_main"
+            app:insetForeground="#00000000"
+            app:menu="@menu/activity_main_nav">
+        </android.support.design.widget.NavigationView>
+
+    </android.support.v4.widget.DrawerLayout>
 </layout>

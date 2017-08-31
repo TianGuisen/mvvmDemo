@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="MyToolbar" parent="Widget.AppCompat.Toolbar">
         <!--去除左边距-->
         <item name="contentInsetStart">0dp</item>

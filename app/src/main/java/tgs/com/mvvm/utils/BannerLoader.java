@@ -1,4 +1,4 @@
-package tgs.com.mvvm.core;
+package tgs.com.mvvm.utils;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -20,16 +20,6 @@ public class BannerLoader extends ImageLoader {
     
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
-        RequestOptions options = new RequestOptions()
-                .centerCrop()
-                .placeholder(R.drawable.bili_default_image_tv)
-                .error(R.drawable.img_tips_error_banner_tv)
-                .priority(Priority.HIGH)
-                .diskCacheStrategy(DiskCacheStrategy.NONE);
-        Glide.with(context.getApplicationContext())
-                .load(path)
-//                .apply(options)
-                .transition(new DrawableTransitionOptions().crossFade(500))
-                .into(imageView);
+        GlideUtil.setImg(imageView,path);
     }
 }

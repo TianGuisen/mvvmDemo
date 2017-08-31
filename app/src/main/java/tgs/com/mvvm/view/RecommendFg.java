@@ -112,8 +112,8 @@ public class RecommendFg extends BaseFragment<FgRecommendBinding> implements IRe
     }
     
     @Override
-    public void startVideoDetailsFg(String param, String cover) {
-        ((SupportFragment) getParentFragment()).start(VideoDetailsFg.newInstance(param,cover));
+    public void startVideoDetailsFg(String param, String cover,String imgurl) {
+        ((SupportFragment) getParentFragment()).start(VideoDetailsFg.newInstance(param,cover, imgurl));
     }
     
     @Override

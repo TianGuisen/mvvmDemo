@@ -16,6 +16,6 @@ public interface IRecommend extends BaseInterface {
      */
     void refreshComplete(boolean refresh, boolean success);
     
-    void startVideoDetailsFg(String param, String cover);
+    void startVideoDetailsFg(String param, String cover,String imgurl);
     
 }

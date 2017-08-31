@@ -5,4 +5,11 @@ package tgs.com.mvvm.view.Iview;
  */
 
 public interface IVideoDetails extends BaseInterface {
+    /**
+     * @param b true 展开，flase关闭
+     */
+    void appBarState(boolean b);
+    
+    void starPlayer();
+    
 }

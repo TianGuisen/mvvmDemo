@@ -8,7 +8,7 @@ import com.youth.banner.Transformer;
 import java.util.List;
 import java.util.Map;
 
-import tgs.com.mvvm.core.BannerLoader;
+import tgs.com.mvvm.utils.BannerLoader;
 import tgs.com.mvvm.databinding.ItemBannerBinding;
 import tgs.com.mvvm.databinding.ItemStandardCardBinding;
 

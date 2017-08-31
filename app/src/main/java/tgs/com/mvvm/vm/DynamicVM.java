@@ -8,6 +8,7 @@ import tgs.com.mvvm.view.Iview.IDynamic;
  */
 
 public class DynamicVM extends BaseVM<IDynamic> {
+    
     public DynamicVM(BaseInterface baseInterface) {
         super(baseInterface);
     }

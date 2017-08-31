@@ -8,8 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gyf.barlibrary.ImmersionBar;
+
 import me.yokeyword.fragmentation.SupportFragment;
 import tgs.com.mvvm.BR;
+import tgs.com.mvvm.R;
 import tgs.com.mvvm.utils.ToastUtil;
 import tgs.com.mvvm.view.Iview.BaseInterface;
 import tgs.com.mvvm.vm.BaseVM;
@@ -24,16 +27,38 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFra
     private D bind;
     private BaseVM vm;
     private RotateLoading loading;
+    private ImmersionBar mImmersionBar;
     
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         bind = DataBindingUtil.inflate(inflater, setLayout(), container, false);
         bind.setVariable(BR.vm, vm = setVM());
+        return bind.getRoot();
+    }
+    
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+//        if (view != null) {
+//            View titleBar = view.findViewById(setTitleBar());
+//            if (titleBar != null)
+//                ImmersionBar.setTitleBar(getActivity(), titleBar);
+//            View statusBarView = view.findViewById(setStatusBarView());
+//            if (statusBarView != null)
+//                ImmersionBar.setStatusBarView(getActivity(), statusBarView);
+//        }
         init();
         vm.init();
         setUserVisibleHint(true);
-        return bind.getRoot();
+    }
+    
+    private int setTitleBar() {
+        return R.id.toolbar;
+    }
+    
+    private int setStatusBarView() {
+        return R.id.status;
     }
     
     @Override
@@ -53,12 +78,13 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFra
     protected void init() {
         
     }
-    
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        vm.onDestroy();
-    }
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        vm.onDestroy();
+//        if (mImmersionBar != null)
+//            mImmersionBar.destroy();
+//    }
     
     public MainAct getMainAct() {
         return (MainAct) _mActivity;
