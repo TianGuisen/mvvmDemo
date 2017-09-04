@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.apkfuns.logutils.LogUtils;
 
+import tgs.com.mvvm.bean.RecommendInfo;
 import tgs.com.mvvm.bean.VideoDetailsInfo;
 import tgs.com.mvvm.core.Reply;
 import tgs.com.mvvm.core.retrofit.MyObserver;
@@ -18,21 +19,21 @@ import tgs.com.mvvm.view.Iview.IVideoDetails;
  */
 
 public class VideoDetailsVM extends BaseVM<IVideoDetails> {
-    public String param;
-    public String cover;
-    
+    public RecommendInfo.ResultBean.BodyBean bodyBean;
+    public VideoDetailsInfo videoDetailsInfo;
     public VideoDetailsVM(BaseInterface baseInterface) {
         super(baseInterface);
     }
     
     @Override
     public void init() {
-        RetrofitUtil.getJson().getVideoDetails(param)
+        //            i.startVideoDetailsFg(bodyBean.getParam(),bodyBean.getCover(),bodyBean.getCover());
+        RetrofitUtil.getJson().getVideoDetails(bodyBean.getParam())
                 .compose(RxHelper.ioMain())
                 .subscribe(new MyObserver<VideoDetailsInfo>(true, null) {
                     @Override
-                    protected void next(VideoDetailsInfo videoDetailsInfo) {
-                        LogUtils.d(videoDetailsInfo);
+                    protected void next(VideoDetailsInfo videoDetailsInfo1) {
+                        videoDetailsInfo=videoDetailsInfo1;
                     }
                 });
     }

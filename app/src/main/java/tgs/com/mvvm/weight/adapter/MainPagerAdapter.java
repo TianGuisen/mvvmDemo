@@ -15,7 +15,7 @@ import tgs.com.mvvm.view.ZoneFg;
  */
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
-    private String[] titles = {"Re测试", "多Tpye的Re测试", "推荐", "直播", "动态"};
+    private String[] titles = {"Re测试", "多Tpye的Re测试", "推荐", "直播"};
     
     public MainPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -32,8 +32,6 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
                 return RecommendFg.newInstance();
             case 3:
                 return ZoneFg.newInstance();
-            case 4:
-                return DynamicFg.newInstance();
         }
         return null;
     }

@@ -1,0 +1,80 @@
+<FrameLayout android:id="@+id/playerFrame"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <tgs.com.mvvm.weight.player.VideoPlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <master.flame.danmaku.ui.widget.DanmakuView
+        android:id="@+id/sv_danmaku"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <RelativeLayout
+        android:id="@+id/buffering_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <tgs.com.mvvm.weight.CircleProgressView
+            android:id="@+id/video_loading_progress"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            app:matProg_barColor="?attr/colorPrimary"
+            app:matProg_barWidth="4dp"
+            app:matProg_progressIndeterminate="true" />
+
+        <TextView
+            android:id="@+id/video_loading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/video_loading_progress"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="30px"
+            android:text="加载中…"
+            android:textColor="@color/white"
+            android:textSize="48px" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/video_start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/white_f2"
+        android:visibility="visible" >
+
+        <ImageView
+            android:id="@+id/bili_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/anim_video_loading" />
+
+        <TextView
+            android:id="@+id/video_start_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="初始化播放器…"
+            android:textColor="@android:color/black"
+            android:textSize="36px" />
+    </RelativeLayout>
+</FrameLayout>

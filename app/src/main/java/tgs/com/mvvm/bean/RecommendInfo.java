@@ -1,8 +1,11 @@
 package tgs.com.mvvm.bean;
 
 
+import android.os.Parcelable;
+
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.ToString;
@@ -135,7 +138,7 @@ public class RecommendInfo {
             }
         }
         @ToString
-        public static class BodyBean {
+        public static class BodyBean implements Serializable{
             /**
              * title : 【碧蓝航线MMD】 为什么到现在才开始爱上你 . . .『 Angelite 』
              * style : gm_av

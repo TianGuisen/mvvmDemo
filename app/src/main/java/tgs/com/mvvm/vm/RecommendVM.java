@@ -93,10 +93,8 @@ public class RecommendVM extends BaseVM<IRecommend> implements RecommendAdapter.
                     listRecommendedHead.get(14).setImg(R.drawable.ic_category_movie);
                     listRecommendedHead.get(15).setImg(R.drawable.ic_header_topic);
                 }, throwable -> {
-                    LogUtils.d(throwable);
                     i.refreshComplete(true, false);
                 }, () -> {
-                    LogUtils.d("com");
                     i.refreshComplete(true, true);
                 });
     
@@ -127,7 +125,7 @@ public class RecommendVM extends BaseVM<IRecommend> implements RecommendAdapter.
     public void itemClick(Object bean, View view, int position) {
         if (view.getId() == R.id.card_standard) {
             RecommendInfo.ResultBean.BodyBean bodyBean = (RecommendInfo.ResultBean.BodyBean) bean;
-            i.startVideoDetailsFg(bodyBean.getParam(),bodyBean.getCover(),bodyBean.getCover());
+            i.startVideoDetailsFg(bodyBean);
         }
         i.toastMessage("点击的是item:" + bean.toString() + "  位置:" + position);
     }

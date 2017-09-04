@@ -57,7 +57,7 @@ public abstract class MyObserver<T> implements Observer<T> {
             } else if (e instanceof HttpException) {
                 ToastUtil.showToast("服务器异常,请稍后再试");
             } else {
-                LogUtils.d(e);
+                LogUtils.e(e);
             }
         }
         if (loading != null) {

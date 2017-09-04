@@ -40,24 +40,24 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFra
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        if (view != null) {
-//            View titleBar = view.findViewById(setTitleBar());
-//            if (titleBar != null)
-//                ImmersionBar.setTitleBar(getActivity(), titleBar);
-//            View statusBarView = view.findViewById(setStatusBarView());
-//            if (statusBarView != null)
-//                ImmersionBar.setStatusBarView(getActivity(), statusBarView);
-//        }
+        if (view != null) {
+            View titleBar = view.findViewById(setTitleBar());
+            if (titleBar != null)
+                ImmersionBar.setTitleBar(getActivity(), titleBar);
+            View statusBarView = view.findViewById(setStatusBarView());
+            if (statusBarView != null)
+                ImmersionBar.setStatusBarView(getActivity(), statusBarView);
+        }
         init();
         vm.init();
         setUserVisibleHint(true);
     }
     
-    private int setTitleBar() {
+    protected int setTitleBar() {
         return R.id.toolbar;
     }
     
-    private int setStatusBarView() {
+    protected int setStatusBarView() {
         return R.id.status;
     }
     
@@ -78,13 +78,26 @@ public abstract class BaseFragment<D extends ViewDataBinding> extends SupportFra
     protected void init() {
         
     }
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        vm.onDestroy();
-//        if (mImmersionBar != null)
-//            mImmersionBar.destroy();
-//    }
+    @Override
+    public void onSupportVisible() {
+        super.onSupportVisible();
+        //如果要在Fragment单独使用沉浸式，请在onSupportVisible实现沉浸式
+        if (isImmersionBarEnabled()) {
+            mImmersionBar = ImmersionBar.with(this);
+            mImmersionBar.navigationBarWithKitkatEnable(false).init();
+        }
+    }
+    
+    private boolean isImmersionBarEnabled() {
+        return false;
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        vm.onDestroy();
+        if (mImmersionBar != null)
+            mImmersionBar.destroy();
+    }
     
     public MainAct getMainAct() {
         return (MainAct) _mActivity;

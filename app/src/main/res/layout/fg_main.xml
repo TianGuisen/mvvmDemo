@@ -17,86 +17,97 @@
         android:layout_height="match_parent"
         tools:openDrawer="start">
 
-        <android.support.design.widget.CoordinatorLayout
+        <LinearLayout
+            android:id="@+id/main_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            >
+            android:background="@android:color/white"
+            android:orientation="vertical">
 
-            <tgs.com.mvvm.core.autolayout.AutoAppBarLayout
+            <View
+                android:id="@+id/status"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                >
+                android:layout_height="0dp"
+                android:background="@color/colorPrimaryDark"/>
 
-                <tgs.com.mvvm.core.autolayout.AutoToolbar
-                    android:id="@+id/toolbar"
-                    style="@style/MyToolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="160px"
-                    android:background="@color/colorPrimary"
-                    app:layout_scrollFlags="scroll|enterAlways"
-                    >
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        bind:click="@{vm.drawerSwitchClick}">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_drawer_home"/>
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="105px"
-                            android:layout_height="105px"
-                            android:layout_marginLeft="45px"
-                            android:src="@drawable/bili_default_image_tv"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="45px"
-                            android:text="田桂森"
-                            android:textColor="@android:color/white"
-                            android:textSize="18sp"/>
-                    </LinearLayout>
-                </tgs.com.mvvm.core.autolayout.AutoToolbar>
-
-                <tgs.com.mvvm.core.autolayout.AutoTabLayout
-                    android:id="@+id/tablayout"
+                <tgs.com.mvvm.core.autolayout.AutoAppBarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    app:tabIndicatorColor="@color/white"
-                    app:tabSelectedTextColor="@color/white"
-                    app:tabTextColor="@color/pinkFD"
-                    />
-            </tgs.com.mvvm.core.autolayout.AutoAppBarLayout>
+                    android:background="@color/colorPrimary">
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/vp_main"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
-            </android.support.v4.view.ViewPager>
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:background="@color/colorPrimary"
+                        app:contentInsetStart="0dp"
+                        app:layout_scrollFlags="scroll|enterAlways">
+                        <!--app:contentInsetStart="0dp"  去除左边距-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            bind:click="@{vm.drawerSwitchClick}">
 
-            <tgs.com.mvvm.weight.RotateLoading
-                android:id="@+id/loading"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_drawer_home"/>
 
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="100px"
-                android:layout_height="100px"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="20px"
-                android:elevation="10dp"
-                bind:click="@{vm.actionClick}"
-                tools:targetApi="lollipop"/>
-        </android.support.design.widget.CoordinatorLayout>
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="105px"
+                                android:layout_height="105px"
+                                android:layout_marginLeft="45px"
+                                android:src="@drawable/bili_default_image_tv"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="45px"
+                                android:text="田桂森"
+                                android:textColor="@android:color/white"
+                                android:textSize="18sp"/>
+                        </LinearLayout>
+                    </android.support.v7.widget.Toolbar>
+
+                    <tgs.com.mvvm.core.autolayout.AutoTabLayout
+                        android:id="@+id/tablayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        app:tabIndicatorColor="@color/white"
+                        app:tabSelectedTextColor="@color/white"
+                        app:tabTextColor="@color/pinkFD"
+                        />
+                </tgs.com.mvvm.core.autolayout.AutoAppBarLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                </android.support.v4.view.ViewPager>
+
+                <tgs.com.mvvm.weight.RotateLoading
+                    android:id="@+id/loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="100px"
+                    android:layout_height="100px"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="20px"
+                    android:elevation="10dp"
+                    bind:click="@{vm.actionClick}"
+                    tools:targetApi="lollipop"/>
+            </android.support.design.widget.CoordinatorLayout>
+        </LinearLayout>
 
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"

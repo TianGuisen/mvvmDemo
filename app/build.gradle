@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "tgs.com.mvvm"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -17,7 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    
+
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
@@ -76,10 +76,19 @@ dependencies {
     //fragment
     compile 'me.yokeyword:fragmentation:1.1.3'
     //使用provided而不是compile，是编译时使用，但不打包到apk中.http://www.jianshu.com/p/268fb94e858d.
-    provided  'org.projectlombok:lombok:1.16.18'
+    provided 'org.projectlombok:lombok:1.16.18'
     //轮播广告
     compile 'com.youth.banner:banner:1.4.9'
     //状态栏
-//    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'com.gyf.barlibrary:barlibrary:2.2.9'
+    //播放器
+    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.6.0'
+    compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.0'
+    compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.6.1'
+    compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.6.1'
+    compile 'tv.danmaku.ijk.media:ijkplayer-arm64:0.8.2'
+    compile 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.2'
+    compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.2'
+    //弹幕
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.5.6'
 }

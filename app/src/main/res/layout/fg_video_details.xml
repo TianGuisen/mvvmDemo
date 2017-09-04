@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:clipToPadding="true"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
         tools:ignore="MergeRootFrame"
         >
 
@@ -23,7 +22,6 @@
             android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="600px"
-            android:fitsSystemWindows="true"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <tgs.com.mvvm.core.autolayout.AutoCollapsingToolbarLayout
@@ -34,11 +32,6 @@
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                 app:statusBarScrim="@android:color/transparent"
                 >
-                <View
-                    android:id="@+id/status"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:background="@color/colorPrimary" />
                 <!--封面图片-->
                 <ImageView
                     android:id="@+id/iv"

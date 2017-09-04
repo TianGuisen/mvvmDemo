@@ -44,7 +44,6 @@ public class MainFg extends BaseFragment<FgMainBinding> implements IMain, Naviga
         getBind().navView.getChildAt(0).setVerticalScrollBarEnabled(false);
         //左侧菜单点击事件
         getBind().navView.setNavigationItemSelectedListener(this);
-        
         //onCreateOptionsMenu执行需要这句话
         getMainAct().setSupportActionBar(getBind().toolbar);
         //去toolBar标题
@@ -52,7 +51,7 @@ public class MainFg extends BaseFragment<FgMainBinding> implements IMain, Naviga
         
         AutoTabLayout tablayout = getBind().tablayout;
         ViewPager vpMain = getBind().vpMain;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             tablayout.addTab(tablayout.newTab());
         }
         vpMain.setAdapter(new MainPagerAdapter(getChildFragmentManager()));
@@ -69,6 +68,11 @@ public class MainFg extends BaseFragment<FgMainBinding> implements IMain, Naviga
             return true;
         } 
         return false;
+    }
+    
+    @Override
+    protected int setTitleBar() {
+        return 0;
     }
     
     public void drawerSwitch(boolean show) {

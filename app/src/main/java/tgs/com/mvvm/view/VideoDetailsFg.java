@@ -6,12 +6,10 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.apkfuns.logutils.LogUtils;
-
 import io.reactivex.Observable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import tgs.com.mvvm.R;
+import tgs.com.mvvm.bean.RecommendInfo;
 import tgs.com.mvvm.core.autolayout.AutoTabLayout;
 import tgs.com.mvvm.databinding.FgVideoDetailsBinding;
 import tgs.com.mvvm.utils.GlideUtil;
@@ -27,16 +25,12 @@ import tgs.com.mvvm.weight.adapter.DetailsPagerAdapter;
 public class VideoDetailsFg extends BaseFragment<FgVideoDetailsBinding> implements IVideoDetails {
     
     private static final String ARG_PARAM = "arg_param";
-    private static final String ARG_COVER = "arg_cover";
-    private static final String ARG_IMGURL = "arg_imgurl";
     private VideoDetailsVM vm;
     
-    public static VideoDetailsFg newInstance(String param, String cover, String imgurl) {
+    public static VideoDetailsFg newInstance(RecommendInfo.ResultBean.BodyBean bodyBean) {
         VideoDetailsFg fragment = new VideoDetailsFg();
         Bundle bundle = new Bundle();
-        bundle.putString(ARG_PARAM, param);
-        bundle.putString(ARG_COVER, cover);
-        bundle.putString(ARG_IMGURL, imgurl);
+        bundle.putSerializable(ARG_PARAM, bodyBean);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -55,9 +49,9 @@ public class VideoDetailsFg extends BaseFragment<FgVideoDetailsBinding> implemen
     @Override
     protected void init() {
         Bundle bundle = getArguments();
-        vm.param = bundle.getString(ARG_PARAM);
-        vm.cover = bundle.getString(ARG_COVER);
-        GlideUtil.setImg(getBind().iv, bundle.getString(ARG_IMGURL));
+        vm.bodyBean = (RecommendInfo.ResultBean.BodyBean) bundle.getSerializable(ARG_PARAM);
+        
+        GlideUtil.setImg(getBind().iv, vm.bodyBean.getCover());
         
         AutoTabLayout tablayout = getBind().tablayout;
         ViewPager vpDetails = getBind().vpDetails;
@@ -70,6 +64,7 @@ public class VideoDetailsFg extends BaseFragment<FgVideoDetailsBinding> implemen
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 
                 if (verticalOffset == 0) {
+                    
                 } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                     getBind().btbar.setVisibility(View.VISIBLE);//隐藏播放按钮
                 } else {
@@ -85,18 +80,18 @@ public class VideoDetailsFg extends BaseFragment<FgVideoDetailsBinding> implemen
         if (b) {
             Observable.just("")
                     .subscribeOn(Schedulers.io())
-                    .subscribe(new Consumer<String>() {
-                        @Override
-                        public void accept(String s) throws Exception {
-                            Thread.sleep(700);
-                            starPlayer();
-                        }
+                    .subscribe(s -> {
+                        Thread.sleep(700);
+                        starPlayer();
                     });
         }
     }
     
     @Override
     public void starPlayer() {
-        
+        Intent intent=new Intent(getActivity(),IjkPlayerActivity.class);
+        intent.putExtra(IjkPlayerActivity.VIDEO_CID,vm.videoDetailsInfo.getPages().get(0).getCid());
+        intent.putExtra(IjkPlayerActivity.VIDEO_TITLE,vm.videoDetailsInfo.getTitle());
+        startActivity(intent);
     }
 }

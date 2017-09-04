@@ -8,6 +8,7 @@ import java.util.Map;
 
 import me.yokeyword.fragmentation.SupportFragment;
 import tgs.com.mvvm.R;
+import tgs.com.mvvm.bean.RecommendInfo;
 import tgs.com.mvvm.databinding.FgRecommendBinding;
 import tgs.com.mvvm.utils.UIUtil;
 import tgs.com.mvvm.view.Iview.IRecommend;
@@ -112,8 +113,9 @@ public class RecommendFg extends BaseFragment<FgRecommendBinding> implements IRe
     }
     
     @Override
-    public void startVideoDetailsFg(String param, String cover,String imgurl) {
-        ((SupportFragment) getParentFragment()).start(VideoDetailsFg.newInstance(param,cover, imgurl));
+    public void startVideoDetailsFg(RecommendInfo.ResultBean.BodyBean bodyBean) {
+        ((SupportFragment) getParentFragment()).start(VideoDetailsFg.newInstance(bodyBean));
+//        ((SupportFragment) getParentFragment()).start(DynamicFg.newInstance());
     }
     
     @Override

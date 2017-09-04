@@ -1,5 +1,7 @@
 package tgs.com.mvvm.view.Iview;
 
+import tgs.com.mvvm.bean.RecommendInfo;
+
 /**
  * Created by 田桂森 on 2017/7/31.
  */
@@ -16,6 +18,6 @@ public interface IRecommend extends BaseInterface {
      */
     void refreshComplete(boolean refresh, boolean success);
     
-    void startVideoDetailsFg(String param, String cover,String imgurl);
+    void startVideoDetailsFg(RecommendInfo.ResultBean.BodyBean bodyBean);
     
 }

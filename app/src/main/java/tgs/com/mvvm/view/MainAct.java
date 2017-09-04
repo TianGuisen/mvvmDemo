@@ -21,8 +21,8 @@ public class MainAct extends MySupportActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.act_main);
         loadRootFragment(R.id.fl_container, MainFg.newInstance());
-//        mImmersionBar = ImmersionBar.with(this);
-//        mImmersionBar.keyboardEnable(true).navigationBarWithKitkatEnable(false).init();
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.keyboardEnable(true).navigationBarWithKitkatEnable(false).init();
     }
     
     @Override
@@ -32,11 +32,11 @@ public class MainAct extends MySupportActivity {
         return true;
     }
     
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        if (mImmersionBar != null)
-//            mImmersionBar.destroy();
-//    }
-//    
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mImmersionBar != null)
+            mImmersionBar.destroy();
+    }
+
 }

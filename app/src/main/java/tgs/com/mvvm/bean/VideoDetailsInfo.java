@@ -1,5 +1,6 @@
 package tgs.com.mvvm.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.ToString;
@@ -8,7 +9,7 @@ import lombok.ToString;
  * Created by 田桂森 on 2017/8/16.
  */
 @ToString
-public class VideoDetailsInfo {
+public class VideoDetailsInfo implements Serializable{
     private int aid;
     private int attribute;
     private int copyright;
