@@ -8,6 +8,7 @@ mvvm版的bilibili。
 
 # 主要集成框架  
 **fragmentation：为"单Activity ＋ 多Fragment","多模块Activity + 多Fragment"架构而生，简化开发，轻松解决动画、嵌套、事务相关等问题。**  
+**ImmersionBar:完成多fragment页面不同沉浸**  
 **glide：谷歌推荐用的图片加载框架**  
 **rxjava2：主要配合retrofit2**  
 **retrofit2：网络**  
@@ -17,11 +18,10 @@ mvvm版的bilibili。
 还有其他一些不一一列举
 
 # 特性
-封装了基于databinding的baseAdapter，不用去写viewHolder和一些普通adapter必须写的代码。如果不需要item中子view的点击事件，可以直接使用simpleAdaper，传入list，layout。  **item.xml中绑定的实体类必须命名为item**。  
+封装了基于databinding的baseAdapter，不用去写viewHolder和一些普通adapter必须写的代码。如果不需要item中子view的点击事件，可以直接使用simpleAdaper，传入list，layout。  **xml中绑定的实体类必须命名为item**。  
 
 封装了rxjava2和retrofit2，集成了参数拦截器，日志拦截器，缓存拦截器，对返回结果进行统一封装处理，不用去单独控制loading，在rxSubscribe中进行统一管理。
   
-    
     
 
 ##### 网络请求示例
@@ -34,4 +34,8 @@ mvvm版的bilibili。
                     //...
                     }
                 });
-```
+```  
+
+##### adatper写法详见demo
+
+
