@@ -16,7 +16,7 @@ import tgs.com.mvvm.databinding.ItemStandardCardBinding;
  * Created by 田桂森 on 2017/8/22.
  */
 
-public class RecommendAdapter extends SimpleMultiAdapter {
+public class RecommendAdapter extends MultiBaseAdapter {
     /**
      * 轮播图
      */

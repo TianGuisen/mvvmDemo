@@ -16,14 +16,16 @@ import tgs.com.mvvm.BR;
 
 public abstract class BaseAdapter<E, VB extends ViewDataBinding> extends RecyclerView.Adapter<BaseAdapter.BindViewHolder> {
     List<E> mDatas;
+    onItemClickLisener<E> itemClickLisener;
+    onChildClickLisener<E> childClickLisener;
+    onItemLongClickLisener<E> itemLongClickLisener;
+    
+    BaseAdapter() {
+    }
     
     BaseAdapter(List<E> datas) {
         mDatas = datas;
     }
-    
-    public onItemClickLisener<E> itemClickLisener;
-    public onChildClickLisener<E> childClickLisener;
-    public onItemLongClickLisener<E> itemLongClickLisener;
     
     
     public void setChildClickLisener(onChildClickLisener<E> childClickLisener) {
@@ -46,13 +48,10 @@ public abstract class BaseAdapter<E, VB extends ViewDataBinding> extends Recycle
         void childClick(E bean, View view, int position);
     }
     
-    interface onItemLongClickLisener<E> {
+    public interface onItemLongClickLisener<E> {
         void itemLongClick(E bean, View view, int position);
     }
-    
-    BaseAdapter() {
-    }
-    
+  
     @Override
     public void onBindViewHolder(BaseAdapter.BindViewHolder holder, int position) {
         E bean = mDatas.get(position);

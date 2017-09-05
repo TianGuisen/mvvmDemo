@@ -10,7 +10,7 @@ import tgs.com.mvvm.databinding.ItemType1Binding;
  * 多type，child点击事件用法,如果不需要child点击，用SimpleMultiAdapter即可。
  */
 
-public class Test2Adapter extends SimpleMultiAdapter {
+public class Test2Adapter extends MultiBaseAdapter {
     
     public Test2Adapter(Map<Integer, Integer> itemTypeLayoutMap) {
         super(itemTypeLayoutMap);

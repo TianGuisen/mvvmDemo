@@ -103,39 +103,6 @@ public class UIUtil {
     }
     
     /**
-     * 4.4以上填充状态栏
-     *
-     * @param activity
-     */
-    public static void fillStatus(Activity activity) {
-        Window window = activity.getWindow();
-        ViewGroup mContentView = (ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT);
-        
-        //首先使 ChildView 不预留空间  
-        View mChildView = mContentView.getChildAt(0);
-        if (mChildView != null) {
-            ViewCompat.setFitsSystemWindows(mChildView, false);
-        }
-        int statusBarHeight = getStatusBarHeight(activity);
-        //需要设置这个 flag 才能设置状态栏  
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //避免多次调用该方法时,多次移除了 View  
-        if (mChildView != null && mChildView.getLayoutParams() != null && mChildView.getLayoutParams().height == statusBarHeight) {
-            //移除假的 View.  
-            mContentView.removeView(mChildView);
-            mChildView = mContentView.getChildAt(0);
-        }
-        if (mChildView != null) {
-            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mChildView.getLayoutParams();
-            //清除 ChildView 的 marginTop 属性  
-            if (lp != null && lp.topMargin >= statusBarHeight) {
-                lp.topMargin -= statusBarHeight;
-                mChildView.setLayoutParams(lp);
-            }
-        }
-    }
-    
-    /**
      * 获取状态栏高度
      *
      * @param context
